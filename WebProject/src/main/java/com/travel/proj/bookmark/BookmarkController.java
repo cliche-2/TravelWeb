@@ -1,4 +1,4 @@
-package com.travel.proj.Bookmark;
+package com.travel.proj.bookmark;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
