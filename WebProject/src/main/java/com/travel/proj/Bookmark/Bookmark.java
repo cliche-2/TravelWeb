@@ -1,4 +1,4 @@
-package com.travel.proj.info;
+package com.travel.proj.Bookmark;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
