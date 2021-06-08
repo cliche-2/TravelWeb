@@ -1,4 +1,4 @@
-package com.travel.proj.Bookmark;
+package com.travel.proj.bookmark;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

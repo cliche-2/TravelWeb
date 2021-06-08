@@ -1,4 +1,4 @@
-package com.travel.proj.Bookmark;
+package com.travel.proj.bookmark;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +15,6 @@ public class BookmarkService {
 	
 	// MemberId로 검색
 	
-	// 여행지번호로 검색
+	// contentid(여행지)로 검색 > 개수만 리턴
 
 }
