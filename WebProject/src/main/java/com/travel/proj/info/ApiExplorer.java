@@ -11,7 +11,7 @@ import java.net.URLEncoder;
 
 public class ApiExplorer {
 
-	private String serviceKey="";
+	private String serviceKey="servicekey"; 
 	private String url="";
 	private String areaCode = "1"; // 서울 지역코드
 	
