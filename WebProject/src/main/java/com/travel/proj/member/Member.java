@@ -1,6 +1,7 @@
 package com.travel.proj.member;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -18,13 +19,15 @@ import com.travel.proj.bookmark.Bookmark;
 @Entity
 public class Member {
 
-	@Id
+	@Id // 시퀀스 임의생성했지만 랜덤값만드는게 안전하려나? 세션..?에 저장할 값
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "mem_sequence")
 	@SequenceGenerator(name = "mem_sequence", sequenceName = "seq_mem", allocationSize=1)
 	private int memNum;
-	private String email; 	// 로그인 시 사용할 아이디
+	private String email; 	// 로그인 시 사용할 아이디, 유일값
+//	private String email2;  // 아이디찾기 시 연락가능한 email2, default = email 
 	private String password; 
-	private String name;	// 닉네임
+	private String name;	// 닉네임, 유일값
+	private Date regDate; // 데이터타입 유의
 	@OneToMany(mappedBy = "member")
 	private List<Bookmark> bookmarks = new ArrayList<>();
 	
