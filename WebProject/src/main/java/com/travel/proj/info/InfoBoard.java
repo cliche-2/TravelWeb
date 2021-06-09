@@ -21,4 +21,54 @@ public class InfoBoard {
 	private String infoContent;
 	private Date infoDate;
 	
+	public InfoBoard() {
+		
+	};
+	public InfoBoard(int infoNum, int viewCount, String infoTitle, String infoContent, Date infoDate) {
+		
+		this.infoNum = infoNum;
+		this.viewCount = viewCount;
+		this.infoTitle = infoTitle;
+		this.infoContent = infoContent;
+		this.infoDate = infoDate;
+	}
+	public int getInfoNum() {
+		return infoNum;
+	}
+	public void setInfoNum(int infoNum) {
+		this.infoNum = infoNum;
+	}
+	public int getViewCount() {
+		return viewCount;
+	}
+	public void setViewCount(int viewCount) {
+		this.viewCount = viewCount;
+	}
+	public String getInfoTitle() {
+		return infoTitle;
+	}
+	public void setInfoTitle(String infoTitle) {
+		this.infoTitle = infoTitle;
+	}
+	public String getInfoContent() {
+		return infoContent;
+	}
+	public void setInfoContent(String infoContent) {
+		this.infoContent = infoContent;
+	}
+	public Date getInfoDate() {
+		return infoDate;
+	}
+	public void setInfoDate(Date infoDate) {
+		this.infoDate = infoDate;
+	}
+	@Override
+	public String toString() {
+		return "InfoBoard [infoNum=" + infoNum + ", viewCount=" + viewCount + ", infoTitle=" + infoTitle
+				+ ", infoContent=" + infoContent + ", infoDate=" + infoDate + "]";
+	};
+	
+
+	
+	
 }
