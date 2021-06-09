@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -61,8 +62,24 @@ public class BookmarkController {
 	}
 	
 	
-	// MemberId로 검색
+	// MemberId로 검색 >> Member에서 구현
 	
 	// contentid(여행지)로 검색 > 개수만 리턴
+	@GetMapping("/{contentid}")
+	public Map countByContentid(@PathVariable("contentid") String contentid) {
+		Map map = new HashMap();
+		boolean result = false;
+		int count=0;
+		
+		try {
+			count = service.countByContentid(contentid);
+			result= true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		map.put("result", result);
+		map.put("count", count);
+		return map;
+	}
 	
 }
