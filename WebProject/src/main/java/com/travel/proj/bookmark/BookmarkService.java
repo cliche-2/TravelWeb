@@ -23,15 +23,14 @@ public class BookmarkService {
 		rep.deleteById(num);
 	}
 
-
 //	// MemNum로 검색    >> member에서 처리하기
 //	public ArrayList<Member> findByMemNum(int memNum){
 //		return (ArrayList)rep.findByMemnum(memNum);
 //	}
 	
 	// contentid(여행지)로 검색 > 개수만 리턴
-	public ArrayList<Member> findByContentid(int contentid){
-		return (ArrayList)rep.findByContentid(contentid);
+	public int countByContentid(String contentid){
+		return (int)rep.countByContentid(contentid);
 	}
 
 }
