@@ -19,6 +19,8 @@ public class DataController {
 		Map map = new HashMap();
 		boolean result = false;
 		
+		// vue에서 필요한 일정 값 받아오기 
+		
 		// api 콜하기
 		
 		
