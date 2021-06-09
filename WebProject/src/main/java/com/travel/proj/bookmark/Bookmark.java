@@ -4,7 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+
+import com.travel.proj.member.Member;
 
 @Entity
 public class Bookmark {
@@ -14,19 +18,20 @@ public class Bookmark {
 	@SequenceGenerator(name = "book_sequence", sequenceName = "seq_book", allocationSize=1)
 	private int bookNum;
 	// (Member num , contentid)
-	private int memNum;
+	@ManyToOne
+	@JoinColumn(name = "memNum")
+	private Member member;
 	private String contentid;
-	
 	// 추천시스템을 위한 필드
 	private String contentTypeId;	// 관광타입
 	private String sigungucode;		// 시군구코드: 지역
 
 	
 	public Bookmark(){};
-	public Bookmark(int bookNum, int memNum, String contentid, String contentTypeId, String sigungucode) {
+	public Bookmark(int bookNum, Member member, String contentid, String contentTypeId, String sigungucode) {
 
 		this.bookNum = bookNum;
-		this.memNum = memNum;
+		this.member = member;
 		this.contentid = contentid;
 		this.contentTypeId = contentTypeId;
 		this.sigungucode = sigungucode;
@@ -37,11 +42,11 @@ public class Bookmark {
 	public void setBookNum(int bookNum) {
 		this.bookNum = bookNum;
 	}
-	public int getMemNum() {
-		return memNum;
+	public Member getMember() {
+		return member;
 	}
-	public void setMemNum(int memNum) {
-		this.memNum = memNum;
+	public void setMember(Member member) {
+		this.member = member;
 	}
 	public String getContentid() {
 		return contentid;
@@ -63,7 +68,7 @@ public class Bookmark {
 	}
 	@Override
 	public String toString() {
-		return "Bookmark [bookNum=" + bookNum + ", memNum=" + memNum + ", contentid=" + contentid + ", contentTypeId="
+		return "Bookmark [bookNum=" + bookNum + ", member=" + member + ", contentid=" + contentid + ", contentTypeId="
 				+ contentTypeId + ", sigungucode=" + sigungucode + "]";
 	}
 	
