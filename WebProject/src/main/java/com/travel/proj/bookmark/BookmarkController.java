@@ -32,6 +32,9 @@ public class BookmarkController {
 		Map map = new HashMap();
 		boolean result = false;
 		
+		// memNum을 member객체와 연결하는 작업을 해야 함
+		// 패키지를 넘나드는데 어쩌지
+		
 		try {
 			service.addBookmark(bookmark);
 			result = true;
