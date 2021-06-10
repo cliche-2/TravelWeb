@@ -19,8 +19,8 @@ public class ApiExplorer {
 	private String pageNo ="1";
 	// 현재 페이지 번호 <<<<< 페이지 넘기는 거 수정하기
 	// 사용할 데이터 양이 얼마나 되는 지 확인한 후, 최대값 (예를 들어 500) 으로 지정해서, 모든 데이터를 한번에 넘겨 주고 페이지 처리는 vue에서 하도록 할까
-	
 	// vue에서 현재 페이지번호(default =1)와 원하는 페이지번호 값 받아오면 백엔드서버에서 처리하는 방식?  
+	
 	private String arrange ; 	// 정렬 구분: O제목순 P조회순 Q수정일순 R생성일순 
 	
 	private String contentTypeId;	// 관광타입 ID
