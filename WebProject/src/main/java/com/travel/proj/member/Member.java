@@ -32,14 +32,17 @@ public class Member {
 	private List<Bookmark> bookmarks = new ArrayList<>();
 	
 	public Member() {};
-	public Member(int memNum, String email, String password, String name, List<Bookmark> bookmarks) {
-		super();
+	
+	public Member(int memNum, String email, String password, String name, Date regDate, List<Bookmark> bookmarks) {
+	
 		this.memNum = memNum;
 		this.email = email;
 		this.password = password;
 		this.name = name;
+		this.regDate = regDate;
 		this.bookmarks = bookmarks;
 	}
+
 	public int getMemNum() {
 		return memNum;
 	}
@@ -69,6 +72,13 @@ public class Member {
 	}
 	public void setBookmarks(List<Bookmark> bookmarks) {
 		this.bookmarks = bookmarks;
+	}
+	
+	public Date getRegDate() {
+		return regDate;
+	}
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
 	}
 	@Override
 	public String toString() {

@@ -18,7 +18,7 @@ public class DataController {
 	
 	
 	// 지역별로 Get Mapping
-	@GetMapping("{sigungu}")
+	@GetMapping("/area/{sigungu}")
 	public Map showArea(@PathVariable("sigungu") String sigungu) {
 		Map map = new HashMap();
 		boolean result = false;
@@ -89,7 +89,7 @@ public class DataController {
 	
 	
 	// 세부정보 보기
-	@GetMapping("{contentId}")
+	@GetMapping("/detail/{contentId}")
 	public Map showDetailCommon(@PathVariable("contentId") String contentId) {
 		Map map = new HashMap();
 		boolean result = false;

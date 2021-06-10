@@ -12,7 +12,7 @@ import java.net.URLEncoder;
 
 public class ApiExplorer {
 
-	private String serviceKey="servicekey"; 
+	private String serviceKey="hFsPRQWYdGq2msydGDgKrVrhBgd0Rf7ydXE3xpMsKYYWVCxRxmFmut0xklaGgUuOMRuWH4INxl7dZw4rtjdR4w%3D%3D"; 
 	private String areaCode = "1"; 	// 서울 지역코드
 	private String MobileOS = "ETC";// OS 구분
 	private String numOfRows = "6";// 페이지 당 결과 수 - 고정 
@@ -148,6 +148,7 @@ public class ApiExplorer {
 						  .append("&" + URLEncoder.encode("MobileApp","UTF-8") + "=" + URLEncoder.encode("AppTest", "UTF-8")) /*서비스명=어플명*/
 						  .append("&" + URLEncoder.encode("areaCode","UTF-8") + "=" + URLEncoder.encode(areaCode, "UTF-8")) /*지역코드, 시군구코드*/
 						  .append("&" + URLEncoder.encode("sigunguCode","UTF-8") + "=" + URLEncoder.encode(sigunguCode, "UTF-8")) /*지역코드, 시군구코드*/
+						  .append("&" + URLEncoder.encode("listYN","UTF-8") + "=" + URLEncoder.encode("Y", "UTF-8")) /* 목록 또는 개수*/
 						  .append("&" + URLEncoder.encode("_type", "UTF-8") + "=" + URLEncoder.encode("json","UTF-8"));
 						
 				URL url = new URL(urlBuilder.toString());

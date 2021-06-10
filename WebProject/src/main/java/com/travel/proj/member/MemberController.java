@@ -4,12 +4,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,6 +29,7 @@ public class MemberController {
 	private MemberService service;
 	
 	// 회원가입
+	@PostMapping("")
 	public Map addMem(Member member) {
 		Map map = new HashMap();
 		boolean result = false;
@@ -41,6 +47,19 @@ public class MemberController {
 	}
 	
 	// 로그인
+	@PostMapping("/login")
+	public Map memberLogin(Member member) {
+		Map map = new HashMap();
+		boolean result = false;
+		
+		if(member != null) {
+			result =service.loginSuccess(member);
+			// token 처리로 바꿀 것
+		}
+		
+		map.put("result", result);
+		return map;
+	}
 	
 	
 	// 회원조회
@@ -51,7 +70,7 @@ public class MemberController {
 		ArrayList<Member> memberList = null;
 		boolean result = false;
 			
-		// !관리자 접속인지 확인하는 부분 있어야 함!
+		// !관리자 접속인지 확인하는 부분 있어야 하나?
 		if (true) {
 			try {
 				memberList = service.getAll();
@@ -103,8 +122,8 @@ public class MemberController {
 		return map;
 	}
 		// 이메일 중복체크
-	@GetMapping("/check/{email}")
-	public Map checkEmail (@PathVariable("email") String email) {
+	@PostMapping("/check")
+	public Map checkEmail (String email) {
 		Map map = new HashMap();
 		boolean result = false;
 		String message = "";

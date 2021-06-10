@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.travel.proj.bookmark.Bookmark;
 
+
 public interface MemberRepository extends JpaRepository<Member, Integer> {
 	
 	// email로 memNum찾기
