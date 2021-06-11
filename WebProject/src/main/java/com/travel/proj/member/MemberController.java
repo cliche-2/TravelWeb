@@ -139,6 +139,9 @@ public class MemberController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		map.put("result", result);
+		map.put("message", message);
 		return map;
 	}
 	
