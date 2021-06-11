@@ -138,7 +138,7 @@ public class ApiExplorer {
 		String result ="";
 		setSigunguCode(sigungu);
 		
-			
+		
 			try {
 				// 요청 생성
 				urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "="+serviceKey) /*Service Key*/
