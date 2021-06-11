@@ -12,7 +12,7 @@ import java.net.URLEncoder;
 
 public class ApiExplorer {
 
-	private String serviceKey="hFsPRQWYdGq2msydGDgKrVrhBgd0Rf7ydXE3xpMsKYYWVCxRxmFmut0xklaGgUuOMRuWH4INxl7dZw4rtjdR4w%3D%3D"; 
+	private String serviceKey=""; 
 	private String areaCode = "1"; 	// 서울 지역코드
 	private String MobileOS = "ETC";// OS 구분
 	private String numOfRows = "6";// 페이지 당 결과 수 - 고정 
