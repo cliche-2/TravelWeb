@@ -131,6 +131,7 @@ public class ApiExplorer {
 	
 	
 	
+	// 왜 얘만 안되지?
 	/* 지역 기반 목로 조회 */
 	public String areaBasedList(String sigungu) {
 		String baseUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList";

@@ -30,7 +30,7 @@ public class MemberService {
 	public boolean loginSuccess(Member member) {
 		boolean result =  false;
 		int memNum= 0;
-		memNum = rep.findMemNumByEmail(member.getEmail());
+		memNum = rep.findMemNumByEmail(member.getEmail()) ;
 		
 		if(memNum>0) {// 아이디 없음
 			String pw = (rep.findById(memNum).orElse(null)).getPassword();
@@ -50,7 +50,7 @@ public class MemberService {
 		// 멤버 이메일로
 	public Member getMemberByEmail(String email)	{
 		int memNum=0;
-		memNum=rep.findMemNumByEmail(email);
+		memNum= rep.findMemNumByEmail(email);
 		
 		if (memNum==0) return null;
 		return rep.findById(memNum).orElse(null);
