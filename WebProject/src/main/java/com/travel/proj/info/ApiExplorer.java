@@ -131,13 +131,12 @@ public class ApiExplorer {
 	
 	
 	
-	// 왜 얘만 안되지?
 	/* 지역 기반 목로 조회 */
 	public String areaBasedList(String sigungu) {
 		String baseUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList";
 		StringBuilder urlBuilder = new StringBuilder(baseUrl);
 		String result ="";
-		sigunguCode = sigungu;
+		setSigunguCode(sigungu);
 		
 			
 			try {
@@ -153,6 +152,7 @@ public class ApiExplorer {
 						  .append("&" + URLEncoder.encode("_type", "UTF-8") + "=" + URLEncoder.encode("json","UTF-8"));
 						
 				URL url = new URL(urlBuilder.toString());
+				System.out.println(url);
 				result=getJsonData(url);
 				
 			} catch (UnsupportedEncodingException e) {
