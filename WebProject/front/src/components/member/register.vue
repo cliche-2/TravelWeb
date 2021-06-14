@@ -31,7 +31,7 @@ methods:{
     form.append('password', this.password);
     form.append('name', this.name);
 
-    this.$axios.post('/members', form)
+    this.$axios.post('/members/register', form)
     .then(function(resource){
       if(resource.data.result){
         location.href='index.html'

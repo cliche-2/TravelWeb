@@ -1,6 +1,7 @@
 <template>
 <div>
   <main>
+
     <section id="place_whole">
       <div id="place_banner">
         <div class="place">
@@ -14,7 +15,6 @@
         <a href="sights.html">명소</a>
       </div>
       <section id="list_group">
-        test: {{temp}}
         <h3 class="hidden">여행지 리스트</h3>
         <div id="tap">
           <ul>
@@ -25,15 +25,26 @@
           </ul>
         </div>
 
-        <ul id="place_list">
-          <li v-for="items in info" v-bind:key="items.item.contentid" class="list">
-            {{items.item.title}}
 
-            </li>
+        <ul id="place_list">
+      <!-- v -for 문 위치 -->
+          <li class="list">
+            <router-link :to ="{name: 'InfoDetail', params:{'contentid':'126481', 'typeid':'12'}}">
+            <a href="#">
+              <div><img src="images/cat.jpg" alt="" style="width: 368px"></div>
+              <div>명소이름</div>
+              <div>명소설명명소설명명소설명명소설명명소설명명소설명</div>
+            </a>
+            </router-link>
+          </li>
+
         </ul>
 
       </section>
+
     </section>
+
+
   </main>
 
 </div>
@@ -51,7 +62,7 @@ export default {
   },
   data() {
     return {
-      info: [],
+      info: null,
       img_path: "http://tong.visitkorea.or.kr/cms/resource/85/2031885_image2_1.jpg",
       now_category: this.$route.params.category
     };
@@ -62,11 +73,14 @@ export default {
     this.$axios.get('/travel/'+cat)
       .then(function(res) {
         if (res.data.result) {
-          alert(res.data.result);
-          const temp  = JSON.parse(res.data.jsonResult);
-alert(temp.response.header.resultCode);
-          self.info = temp;
+          var temp  = JSON.parse(res.data.jsonResult);
+          alert(temp.response.header.resultMsg); // okay
+          alert(temp.response.body.numOfRows); // okay
+          alert(temp.response.body.items.item); // okay
 
+          // !json 객체 data()로 넘기기
+          this.info = temp.response.body.items.item; // no
+          alert("done");
 
         } // if
       }); // GET
