@@ -1,5 +1,6 @@
 package com.travel.proj.member;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -29,7 +30,7 @@ public class MemberController {
 	private MemberService service;
 	
 	// 회원가입
-	@PostMapping("")
+	@PostMapping("/register")
 	public Map addMem(Member member) {
 		Map map = new HashMap();
 		boolean result = false;
@@ -49,12 +50,23 @@ public class MemberController {
 	// 로그인
 	@PostMapping("/login")
 	public Map memberLogin(Member member) {
-		Map map = new HashMap();
 		boolean result = false;
+		Map map = new HashMap();
+		Map claimMap = new HashMap(); 
+		String jwt = null;
 		
 		if(member != null) {
 			result =service.loginSuccess(member);
 			// token 처리로 바꿀 것
+			try {
+				JWToken jwToken = new JWToken();
+				jwt = jwToken.createToken(member.getMemNum());
+				claimMap = jwToken.verifyJWT(jwt);
+				map.put("jwt", claimMap);
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
 		}
 		
 		map.put("result", result);

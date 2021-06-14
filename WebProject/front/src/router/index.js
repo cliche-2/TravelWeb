@@ -5,6 +5,7 @@ import InfoList2 from '@/components/info/infolist2.vue'
 import Login from '@/components/member/login.vue'
 import Register from '@/components/member/register.vue'
 import HelloWorld from '@/components/HelloWorld.vue'
+import InfoDetail from '@/components/info/detail.vue'
 
 Vue.use(VueRouter)
 
@@ -31,6 +32,11 @@ export default new VueRouter({
       path: '/info-list2',
       name: 'InfoList2',
       component: InfoList2
+    },
+    {
+      path: '/info-detail',
+      name: 'InfoDetail',
+      component: InfoDetail
     },
     {
       path: '/register',

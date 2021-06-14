@@ -29,11 +29,12 @@
       <h2 class="hidden">DATOO 서브메뉴</h2>
       <ul>
         <li><a href="#"><img src="images/search.png" alt="search"></a></li>
+
         <!-- LOG ON 상태에서만 보여주기 -->
         <li><a href="#"><img src="images/mypage.png" alt="mypage"></a></li>
 
-        <li><a href="#">로그인</a></li>
-        <li><a href="#">회원가입</a></li>
+        <li><router-link to ='/login'>로그인</router-link></li>
+        <li><router-link to ='/register'>회원가입</router-link></li>
       </ul>
     </div>
   </header>
