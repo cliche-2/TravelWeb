@@ -3,6 +3,7 @@ package com.travel.proj.info;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.json.JSONObject;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -83,6 +84,7 @@ public class DataController {
 			e.printStackTrace();
 		}
 		
+		// 문자열 대신 json 객체 반환하기
 		map.put("jsonResult", jsonResult);
 		map.put("result", result);
 		
@@ -106,7 +108,10 @@ public class DataController {
 			e.printStackTrace();
 		}
 		
-		map.put("jsonResult", jsonResult);
+		JSONObject jsonObject = new JSONObject(jsonResult);
+		System.out.println( jsonObject.get("response"));
+		
+		map.put("jsonResult", jsonObject.get("response"));
 		map.put("result", result);
 		
 		return map;

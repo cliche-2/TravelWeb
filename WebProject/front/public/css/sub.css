@@ -1,0 +1,55 @@
+@charset "utf-8";
+@import url(common.css);
+
+/* sights.html */
+#place_whole { width: 100%; height: 2000px; }
+#place_banner { width: 100%; height: 560px; position: relative;
+                background: url(../images/place_banner.jpg) center center / cover; color: #fff; }
+.place { width: 500px; height: 130px; position: absolute;
+         top: 350px; left: 280px; text-shadow: 2px 2px 15px rgba(0,0,0,0.8);}
+#place_banner p { font-size: 24px; text-transform: uppercase; }
+#place_banner h2 { font-size: 55px; font-weight: 500; }
+
+#breadcrumb { width: 250px; text-transform: uppercase; font-size: 18px; background: url(../images/deep.png) no-repeat 82px 9px,
+              url(../images/deep.png) no-repeat 166px 9px; position: absolute; top: 690px; right: 220px; }
+#breadcrumb a { padding: 0 15px; }
+
+#list_group { width: 1500px; height: 1000px; margin: 0 auto; padding-top: 170px; }
+#list_group h3 { color: #ff8400; font-size: 40px; float: left; margin-right: 20px; }
+#list_group p { float: left; line-height: 60px; font-size: 17px; }
+
+#tap { position: relative; margin: 0 auto; width: 1160px; margin-top: -50px; }
+#tap ul { overflow: hidden; width: 1160px; font-size: 24px; font-weight: 500; }
+#tap ul li { width: 230px; height: 100px; float: left; border: 1px solid #d4d4d4; text-align: center; line-height: 100px; }
+#tap ul li:nth-of-type(1) { background: #005c4f; }
+#tap ul li:nth-of-type(1) a { color: #fff; }
+#tap ul li a { width: 230px; height: 100px; display: block; }
+#tap ul li:hover { background: #005c4f; }
+#tap ul li:hover a { color: #fff; }
+
+#place_list { width: 1182px; margin: 0 auto; margin-top: 50px; }
+.list { width: 368px; height: 400px; float: left; border: 1px solid #d4d4d4; margin: 0 12px 40px; }
+.list a { width: 368px; height: 440px; display: block; }
+.list a div:nth-child(1) { width: 368px; height: 200px; }
+.list a div:nth-child(1):hover { opacity: 0.7; }
+.list a div:nth-child(2) { font-size: 26px; font-weight: 400; margin: 65px 0 10px 20px; }
+.list a div:nth-child(2):hover { font-weight: 500; }
+.list a div:nth-child(3) { font-size: 22px; margin: 0 20px; color: #787878; height: 64px; overflow: hidden; }
+
+/* place_detail.html */
+#detail { width: 100%; height: 2400px; }
+#detail_group { width: 1500px; height: 1000px; margin: 0 auto; padding-top: 170px; }
+#intro { width: 1500px; margin: 0 auto; }
+#intro p:first-of-type { color: #005c4f; font-size: 20px; text-align: center; }
+#intro p:last-of-type { font-weight: bold; font-size: 40px; text-align: center; }
+#intro img { margin: 40px 0 0 120px; }
+.btnList { width: 90px; margin: 0 auto; padding-top: 20px; }
+.btnList span { display: block; width: 20px; height: 20px; float: left; margin: 0 5px;
+                background: #bfbfbf; border-radius: 50%; text-indent: -9999px; cursor: pointer; }
+.btnList span:hover { background: #005c4f; }
+.btnList .on { background: #005c4f; }
+#content { clear: both; font-size: 21px; color: #707070; line-height: 30px; padding-top: 50px; }
+#info { width: 1500px; margin: 0 auto; margin-top: 50px; font-size: 22px; }
+#info ul { width: 650px; }
+#info ul li { margin-left: 20px; line-height: 45px; }
+#info ul li span { float: right; display: block; width: 500px; color: #707070; }

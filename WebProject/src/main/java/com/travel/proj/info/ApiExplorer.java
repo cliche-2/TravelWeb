@@ -53,7 +53,7 @@ public class ApiExplorer {
 		case "landmarks":
 			contentTypeId = "12"; cat1="A02"; cat2="A0205"; cat3="A02050600";
 			break;
-		case "museums":
+		case "museums": // 지울까.
 			contentTypeId = "14"; cat1="A02"; cat2="A0206"; cat3="A02060100";
 			break;
 		default:
@@ -218,7 +218,14 @@ public class ApiExplorer {
 						  .append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode(pageNo, "UTF-8")) /*현재 페이지 번호*/
 						  .append("&" + URLEncoder.encode("MobileOS","UTF-8") + "=" + URLEncoder.encode(MobileOS, "UTF-8")) /*IOS (아이폰), AND (안드로이드), WIN (원도우폰), ETC*/
 						  .append("&" + URLEncoder.encode("MobileApp","UTF-8") + "=" + URLEncoder.encode("AppTest", "UTF-8")) /*서비스명=어플명*/
-						  .append("&" + URLEncoder.encode("contentId","UTF-8") + "=" + URLEncoder.encode(contentId, "UTF-8"))						  
+						  .append("&" + URLEncoder.encode("contentId","UTF-8") + "=" + URLEncoder.encode(contentId, "UTF-8"))
+						  .append("&" + URLEncoder.encode("contentType","UTF-8") + "=" + URLEncoder.encode("12", "UTF-8"))
+						  .append("&" + URLEncoder.encode("defaultYN","UTF-8") + "=" + URLEncoder.encode("Y", "UTF-8"))
+						  .append("&" + URLEncoder.encode("firstImageYN","UTF-8") + "=" + URLEncoder.encode("Y", "UTF-8"))
+						  .append("&" + URLEncoder.encode("catcodeYN","UTF-8") + "=" + URLEncoder.encode("Y", "UTF-8"))
+						  .append("&" + URLEncoder.encode("addrinfoYN","UTF-8") + "=" + URLEncoder.encode("Y", "UTF-8"))
+						  .append("&" + URLEncoder.encode("mapinfoYN","UTF-8") + "=" + URLEncoder.encode("Y", "UTF-8"))
+						  .append("&" + URLEncoder.encode("overviewYN","UTF-8") + "=" + URLEncoder.encode("Y", "UTF-8"))
 						  .append("&" + URLEncoder.encode("_type", "UTF-8") + "=" + URLEncoder.encode("json","UTF-8"));
 						
 				URL url = new URL(urlBuilder.toString());

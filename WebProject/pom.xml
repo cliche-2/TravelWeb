@@ -60,6 +60,14 @@
 		  <version>${querydsl.version}</version>
 		</dependency>
 		
+		<!-- https://mvnrepository.com/artifact/org.json/json -->
+		<dependency>
+		    <groupId>org.json</groupId>
+		    <artifactId>json</artifactId>
+		    <version>20210307</version>
+		</dependency>
+		
+		
 <!-- 		<dependency> -->
 <!-- 		  <groupId>org.slf4j</groupId> -->
 <!-- 		  <artifactId>slf4j-log4j12</artifactId> -->
