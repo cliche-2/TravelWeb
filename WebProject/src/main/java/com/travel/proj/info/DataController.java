@@ -48,6 +48,8 @@ public class DataController {
 		boolean result = false;
 		String jsonResult = "";
 		
+		System.out.println(category);
+		
 		try {
 			// api 콜하기
 			ApiExplorer apiEx = new ApiExplorer();
