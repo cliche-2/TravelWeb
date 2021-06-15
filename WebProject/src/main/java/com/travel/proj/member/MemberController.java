@@ -56,17 +56,28 @@ public class MemberController {
 		String jwt = null;
 		
 		if(member != null) {
-			result =service.loginSuccess(member);
-			// token 처리로 바꿀 것
+			int memNum =service.loginSuccess(member);
+			if(memNum>0) {
+			// access와 refresh 2 토큰 사용하는 것도 생각해보기
 			try {
+				member.setMemNum(memNum);
 				JWToken jwToken = new JWToken();
 				jwt = jwToken.createToken(member.getMemNum());
+				map.put("jwt", jwt);
+				System.out.println("CREATE="+jwt);
+				
+				
 				claimMap = jwToken.verifyJWT(jwt);
-				map.put("jwt", claimMap);
+				System.out.println("VERIFY="+claimMap);
+				
+				
+				result = true;
 			} catch (UnsupportedEncodingException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			} 
+			}
+			}
+				
 		}
 		
 		map.put("result", result);

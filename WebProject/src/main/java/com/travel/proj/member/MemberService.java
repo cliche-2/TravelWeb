@@ -27,19 +27,20 @@ public class MemberService {
 	}
 	
 	// 로그인 체크
-	public boolean loginSuccess(Member member) {
-		boolean result =  false;
+	public int loginSuccess(Member member) {
 		int memNum= 0;
 		memNum = rep.findMemNumByEmail(member.getEmail()) ;
 		
-		if(memNum>0) {// 아이디 없음
+		if(memNum>0) {// 아이디 있음
 			String pw = (rep.findById(memNum).orElse(null)).getPassword();
 			if(pw.equals(member.getPassword())) {
-				result = true;
+				
+			} else {
+				memNum = -1;
 			}
 		}
 		
-		return result;
+		return memNum;
 	}
 	
 	// 멤버 객체 조회	

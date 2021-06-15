@@ -2,8 +2,10 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import axios from 'axios'
+import vuecookies from 'vue-cookies'
 
 Vue.config.productionTip = false
+Vue.prototype.$cookies = vuecookies
 Vue.prototype.$axios = axios  //Vue객체에 전역변수 추가
 
 new Vue({
