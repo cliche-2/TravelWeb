@@ -10,22 +10,24 @@
     <input type="password" id='password' v-model='password' />
   </div>
     <div>
-      test:{{token.data}}
+      test:{{this.msg}}
     </div>
   <button v-on:click='login'>login</button>
-
 </div>
 </template>
 
 
 <script>
+// index.js의 router 설정 참고해서 cookies 임포트 해보기
+
 export default {
   name: 'Login',
   data() {
     return {
       email: '',
       password: '',
-      token: ''
+      mytoken:'',
+      msg:'yet'
     };
   },
   methods: {
@@ -37,11 +39,21 @@ export default {
 
       this.$axios.post('/members/login', form)
         .then(function(resource) {
+          alert(resource.data.result);
           if (resource.data.result) {
-            alert(resource.data.jwt);
-            this.token = resource.data.jwt;
+            // set token
+            // $cookies 전역변수를 인식 못함..?
+            this.$cookies.set('token', resource.data.jwt, 60*60*2);
+            alert('set cookie');
+            // set header with token
+//            this.axios.defaults.headers['token'] = this.$cookies.get('token');
+//            alert('set header');
+            this.mytoken = this.$cookies.get('token');
+            alert(this.mytoken);
+            this.msg = this.mytoken;
+//            router.push('/');
           }
-        });
+        }); // POST
     } // login:
 
   } // methods:

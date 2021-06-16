@@ -49,13 +49,14 @@ public class DataController {
 		boolean result = false;
 		String jsonResult = "";
 		
-		System.out.println(category);
+		if (category == null) return null;
 		
 		try {
 			// api 콜하기
 			ApiExplorer apiEx = new ApiExplorer();
 			jsonResult= apiEx.typeBasedList(category);
 			result = true;
+			System.out.println(category);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
