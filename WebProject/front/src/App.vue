@@ -9,17 +9,9 @@
       <h2 class="hidden">DATOO 이용메뉴</h2>
       <ul>
         <!-- 여행지 링크 없애고 카테고리로 링크 넣을 것-->
-        <li><router-link :to ="{name: 'InfoList', params:{'category':'mountains'}}">여행지</router-link>
-          <ul class="sub">
-            <li><router-link to ='/'>카테고리</router-link></li>
-            <li><router-link to ='/'>카테고리</router-link></li>
-          </ul>
+        <li><router-link :to ="{name: 'SiteList'}">여행지</router-link>
         </li>
-        <li><router-link to =''>지역</router-link>
-          <ul class="sub">
-            <li><router-link to ='/'>카테고리</router-link></li>
-            <li><router-link to ='/'>카테고리</router-link></li>
-          </ul>
+        <li><router-link :to ="{name: 'SiteList'}">지역</router-link>
         </li>
         <li><router-link to ='/'>커뮤니티</router-link></li>
         <li><router-link to ='/'>공지사항</router-link></li>
@@ -27,15 +19,23 @@
     </nav>
     <div id="sub_gnb">
       <h2 class="hidden">DATOO 서브메뉴</h2>
-      <ul>
+
+      <!-- login시에만 보이는 -->
+      <ul v-if="isCookie" v-on:click.prevent="deleteCookie">
+        <!-- HTML로 이미지 넣을 경우 public(index.html) 기준으로 경로 설정해야 함 -->
         <li><a href="#"><img src="images/search.png" alt="search"></a></li>
+        <!-- if 관리자 토큰이면 회원관리 페이지로, 아니면 일반 사용자 마이페이지로 이동할 것-->
+          <li><a href="#"><img src="images/mypage.png" alt="mypage"></a></li>
+          <li><a href="/">로그아웃</a></li>
+      </ul>
 
-        <!-- LOG ON 상태에서만 보여주기 -->
-        <li><a href="#"><img src="images/mypage.png" alt="mypage"></a></li>
-
+      <!-- 비로그인만 보이는 -->
+      <ul v-if="!isCookie">
+        <li><a href="#"><img src="images/search.png" alt="search"></a></li>
         <li><router-link to ='/login'>로그인</router-link></li>
         <li><router-link to ='/register'>회원가입</router-link></li>
       </ul>
+
     </div>
   </header>
 
@@ -91,15 +91,18 @@ export default {
   },
   data(){
     return{
-      // 왜 인식 못하지?
-        img_mypage: '@/assets/mypage.png' ,
-        img_search: '@/assets/search.png'
+      isCookie: null
     };
   },
   create:function(){
-
+    this.isCookie = this.$cookies.isKey('token');
   },
   methods:{
+    deleteCookie(){
+      this.$cookies.remove('token');
+      this.isCookie = this.$cookies.isKey('token');
+      alert( "logout");
+    } // deleteCookie()
 
   }
 }
