@@ -5,23 +5,23 @@
       <div id="place_banner">
         <div class="place">
           <p>Everything about traveling to Seoul</p>
-          <h2>명소</h2>
+          <h2>지역</h2>
         </div>
       </div>
       <div id="breadcrumb">
         <a href="">home</a>
         <a href="">여행지</a>
-        <a href="">명소</a>
+        <a href="">지역</a>
       </div>
       <section id="list_group">
-        <h3 class="hidden">여행지 리스트</h3>
+        <h3 class="hidden">지역 리스트</h3>
         <div id="tap">
           <ul>
-            <li v-on:click='mountains'>산</li>
-            <li v-on:click='rivers'>강</li>
-            <li v-on:click='parks'>공원</li>
-            <li v-on:click='palaces'>고궁</li>
-            <li v-on:click='landmarks'>랜드마크</li>
+            <li v-on:click='gangnam'>강남</li>
+            <li v-on:click='mapo'>마포</li>
+            <li v-on:click='dongdaemun'>동대문</li>
+            <li v-on:click='yongsan'>용산</li>
+            <li v-on:click='jongno'>종로</li>
           </ul>
         </div>
 
@@ -46,17 +46,17 @@
 
 <script>
 export default {
-  name: 'SiteList',
+  name: 'AreaList',
   data() {
     return {
-      category: 'mountains',
+      category: 'gangnam',
       sitelist: []
     };
   },
   created: function() {
     const self = this;
     var cat = self.category;
-    this.$axios.get('/travel/' + cat)
+    this.$axios.get('/travel/area/' + cat)
       .then(function(res) {
         if (res.data.result) {
           var temp = JSON.parse(res.data.jsonResult);
@@ -65,12 +65,11 @@ export default {
       }); // GET
   },
   methods: {
-    // now_category 값 다시 세팅하기
-    mountains: function(){
-      this.category = 'mountains';
+    gangnam: function(){
+      this.category = 'gangnam';
       const self = this;
       var cat = self.category;
-      this.$axios.get('/travel/' + cat)
+      this.$axios.get('/travel/area/' + cat)
         .then(function(res) {
           if (res.data.result) {
             var temp = JSON.parse(res.data.jsonResult);
@@ -78,11 +77,11 @@ export default {
           } // if
         }); // GET
     },
-    rivers: function(){
-      this.category = 'rivers';
+    mapo: function(){
+      this.category = 'mapo';
       const self = this;
       var cat = self.category;
-      this.$axios.get('/travel/' + cat)
+      this.$axios.get('/travel/area/' + cat)
         .then(function(res) {
           if (res.data.result) {
             var temp = JSON.parse(res.data.jsonResult);
@@ -90,11 +89,11 @@ export default {
           } // if
         }); // GET
     },
-    parks: function() {
-      this.category = 'parks';
+    dongdaemun: function() {
+      this.category = 'dongdaemun';
       const self = this;
       var cat = self.category;
-      this.$axios.get('/travel/' + cat)
+      this.$axios.get('/travel/area/' + cat)
         .then(function(res) {
           if (res.data.result) {
             var temp = JSON.parse(res.data.jsonResult);
@@ -102,11 +101,11 @@ export default {
           } // if
         }); // GET
     },
-    palaces: function(){
-      this.category = 'palaces';
+    yongsan: function(){
+      this.category = 'yongsan';
       const self = this;
       var cat = self.category;
-      this.$axios.get('/travel/' + cat)
+      this.$axios.get('/travel/area/' + cat)
         .then(function(res) {
           if (res.data.result) {
             var temp = JSON.parse(res.data.jsonResult);
@@ -114,11 +113,11 @@ export default {
           } // if
         }); // GET
     },
-    landmarks: function(){
-      this.category = 'landmarks';
+    jongno: function(){
+      this.category = 'jongno';
       const self = this;
       var cat = self.category;
-      this.$axios.get('/travel/' + cat)
+      this.$axios.get('/travel/area/' + cat)
         .then(function(res) {
           if (res.data.result) {
             var temp = JSON.parse(res.data.jsonResult);
