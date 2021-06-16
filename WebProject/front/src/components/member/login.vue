@@ -1,18 +1,35 @@
 <template>
 <div>
-  <h3>login form</h3>
-  <div>
-    <label for='email'>ID</label>
-    <input type="text" id='email' v-model='email' />
-  </div>
-  <div>
-    <label for='password'>PWD</label>
-    <input type="password" id='password' v-model='password' />
-  </div>
-    <div>
-      test:{{this.msg}}
-    </div>
-  <button v-on:click='login'>login</button>
+  <main>
+    <section id="login_whole">
+      <div id="member_banner"></div>
+      <div id="breadcrumb_one">
+        <a href="index.html">home</a>
+        <a href="login.html">로그인</a>
+      </div>
+
+      <div id="login">
+        <h3>로그인</h3>
+        <section id="small">
+          <div id="s_small">
+            <div id="id">
+              <label for='email'>이메일</label>
+              <input type="text" id='email' v-model='email' />
+            </div>
+            <div>
+              <label for='password'>비밀번호</label>
+              <input type="password" id='password' v-model='password' />
+            </div>
+            <button v-on:click='login'>login</button>
+          </div>
+          <div id="s_add">
+            <p>아이디/비밀번호를 잊어버리셨나요?<a href="">아이디/비밀번호 찾기</a></p>
+            <p>아직 회원이 아니신가요?<router-link to ='/register'>회원가입</router-link></p>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
 </div>
 </template>
 
@@ -25,9 +42,7 @@ export default {
   data() {
     return {
       email: '',
-      password: '',
-      mytoken:'',
-      msg:'yet'
+      password: ''
     };
   },
   methods: {
@@ -42,16 +57,13 @@ export default {
           alert(resource.data.result);
           if (resource.data.result) {
             // set token
-            // $cookies 전역변수를 인식 못함..?
-            this.$cookies.set('token', resource.data.jwt, 60*60*2);
-            alert('set cookie');
+            self.$cookies.set('token', resource.data.jwt, 60*60*2);
+//            alert('set cookie');
+            // 토큰 저장까지는 됨!
             // set header with token
-//            this.axios.defaults.headers['token'] = this.$cookies.get('token');
-//            alert('set header');
-            this.mytoken = this.$cookies.get('token');
-            alert(this.mytoken);
-            this.msg = this.mytoken;
-//            router.push('/');
+            self.$axios.defaults.headers['token'] = self.$cookies.get('token');
+            alert(self.$cookies.isKey('token'));
+            self.$router.push('/');
           }
         }); // POST
     } // login:

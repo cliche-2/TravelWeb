@@ -11,7 +11,7 @@
         <!-- 여행지 링크 없애고 카테고리로 링크 넣을 것-->
         <li><router-link :to ="{name: 'SiteList'}">여행지</router-link>
         </li>
-        <li><router-link :to ="{name: 'SiteList'}">지역</router-link>
+        <li><router-link :to ="{name: 'AreaList'}">지역</router-link>
         </li>
         <li><router-link to ='/'>커뮤니티</router-link></li>
         <li><router-link to ='/'>공지사항</router-link></li>
@@ -25,7 +25,7 @@
         <!-- HTML로 이미지 넣을 경우 public(index.html) 기준으로 경로 설정해야 함 -->
         <li><a href="#"><img src="images/search.png" alt="search"></a></li>
         <!-- if 관리자 토큰이면 회원관리 페이지로, 아니면 일반 사용자 마이페이지로 이동할 것-->
-          <li><a href="#"><img src="images/mypage.png" alt="mypage"></a></li>
+          <li><a href="" v-on:click="mypage"><img src="images/mypage.png" alt="mypage"></a></li>
           <li><a href="/">로그아웃</a></li>
       </ul>
 
@@ -94,15 +94,22 @@ export default {
       isCookie: null
     };
   },
-  create:function(){
-    this.isCookie = this.$cookies.isKey('token');
+  created:function(){
+    const self = this;
+//    alert(self.$cookies.get('token'));
+    self.isCookie = self.$cookies.isKey('token');
   },
   methods:{
     deleteCookie(){
-      this.$cookies.remove('token');
-      this.isCookie = this.$cookies.isKey('token');
+      const self = this;
+      self.$cookies.remove('token');
+      self.isCookie = self.$cookies.isKey('token');
       alert( "logout");
-    } // deleteCookie()
+    }, // deleteCookie()
+    mypage(){
+      // 이렇게 가면 페이지 이동하면서 쿠키 delete됨
+    //  location.href="admin.html";
+    }
 
   }
 }
