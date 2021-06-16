@@ -146,13 +146,15 @@ public class ApiExplorer {
 						  .append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode(pageNo, "UTF-8")) /*현재 페이지 번호*/
 						  .append("&" + URLEncoder.encode("MobileOS","UTF-8") + "=" + URLEncoder.encode(MobileOS, "UTF-8")) /*IOS (아이폰), AND (안드로이드), WIN (원도우폰), ETC*/
 						  .append("&" + URLEncoder.encode("MobileApp","UTF-8") + "=" + URLEncoder.encode("AppTest", "UTF-8")) /*서비스명=어플명*/
+						  .append("&" + URLEncoder.encode("arrange","UTF-8") + "=" + URLEncoder.encode("O", "UTF-8")) /*정렬 제목순*/
+						  .append("&" + URLEncoder.encode("contentTypeId","UTF-8") + "=" + URLEncoder.encode("12", "UTF-8"))
 						  .append("&" + URLEncoder.encode("areaCode","UTF-8") + "=" + URLEncoder.encode(areaCode, "UTF-8")) /*지역코드, 시군구코드*/
 						  .append("&" + URLEncoder.encode("sigunguCode","UTF-8") + "=" + URLEncoder.encode(sigunguCode, "UTF-8")) /*지역코드, 시군구코드*/
 						  .append("&" + URLEncoder.encode("listYN","UTF-8") + "=" + URLEncoder.encode("Y", "UTF-8")) /* 목록 또는 개수*/
 						  .append("&" + URLEncoder.encode("_type", "UTF-8") + "=" + URLEncoder.encode("json","UTF-8"));
 						
 				URL url = new URL(urlBuilder.toString());
-				System.out.println(url);
+//				System.out.println(url);
 				result=getJsonData(url);
 				
 			} catch (UnsupportedEncodingException e) {
@@ -185,6 +187,7 @@ public class ApiExplorer {
 						  .append("&" + URLEncoder.encode("MobileOS","UTF-8") + "=" + URLEncoder.encode(MobileOS, "UTF-8")) /*IOS (아이폰), AND (안드로이드), WIN (원도우폰), ETC*/
 						  .append("&" + URLEncoder.encode("MobileApp","UTF-8") + "=" + URLEncoder.encode("AppTest", "UTF-8")) /*서비스명=어플명*/
 						  .append("&" + URLEncoder.encode("areaCode","UTF-8") + "=" + URLEncoder.encode(areaCode, "UTF-8")) /*지역코드*/
+						  .append("&" + URLEncoder.encode("arrange","UTF-8") + "=" + URLEncoder.encode("O", "UTF-8")) /*정렬 제목순*/
 						  .append("&" + URLEncoder.encode("cat1","UTF-8") + "=" + URLEncoder.encode(cat1, "UTF-8")) 
 						  .append("&" + URLEncoder.encode("cat2","UTF-8") + "=" + URLEncoder.encode(cat2, "UTF-8")) 
 						  .append("&" + URLEncoder.encode("cat3","UTF-8") + "=" + URLEncoder.encode(cat3, "UTF-8")) 
@@ -219,7 +222,7 @@ public class ApiExplorer {
 						  .append("&" + URLEncoder.encode("MobileOS","UTF-8") + "=" + URLEncoder.encode(MobileOS, "UTF-8")) /*IOS (아이폰), AND (안드로이드), WIN (원도우폰), ETC*/
 						  .append("&" + URLEncoder.encode("MobileApp","UTF-8") + "=" + URLEncoder.encode("AppTest", "UTF-8")) /*서비스명=어플명*/
 						  .append("&" + URLEncoder.encode("contentId","UTF-8") + "=" + URLEncoder.encode(contentId, "UTF-8"))
-						  .append("&" + URLEncoder.encode("contentType","UTF-8") + "=" + URLEncoder.encode("12", "UTF-8"))
+						  .append("&" + URLEncoder.encode("contentTypeId","UTF-8") + "=" + URLEncoder.encode("12", "UTF-8"))
 						  .append("&" + URLEncoder.encode("defaultYN","UTF-8") + "=" + URLEncoder.encode("Y", "UTF-8"))
 						  .append("&" + URLEncoder.encode("firstImageYN","UTF-8") + "=" + URLEncoder.encode("Y", "UTF-8"))
 						  .append("&" + URLEncoder.encode("catcodeYN","UTF-8") + "=" + URLEncoder.encode("Y", "UTF-8"))

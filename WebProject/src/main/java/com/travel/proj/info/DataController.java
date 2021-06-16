@@ -72,7 +72,8 @@ public class DataController {
 	}
 	
 	
-	// 카테고리 전체보기 (수정필요 DO NOT USE)
+	// 조회수 높은순으로 보기?
+	// 사용하지 말 것
 	@GetMapping("")
 	public Map showAllCategory() {
 		Map map = new HashMap();
@@ -94,6 +95,8 @@ public class DataController {
 		
 		return map;
 	}
+	
+	// 해당 사용자의 북마크 기반 위치, 분류별 조회하기
 	
 	
 	// 세부정보 보기

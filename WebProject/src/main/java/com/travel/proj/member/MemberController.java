@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.json.Cookie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -54,6 +55,7 @@ public class MemberController {
 		Map map = new HashMap();
 		Map claimMap = new HashMap(); 
 		String jwt = null;
+		Cookie cookie = null;
 		
 		if(member != null) {
 			int memNum =service.loginSuccess(member);
@@ -63,9 +65,11 @@ public class MemberController {
 				member.setMemNum(memNum);
 				JWToken jwToken = new JWToken();
 				jwt = jwToken.createToken(member.getMemNum());
+				
+				
+				
 				map.put("jwt", jwt);
 				System.out.println("CREATE="+jwt);
-				
 				
 				claimMap = jwToken.verifyJWT(jwt);
 				System.out.println("VERIFY="+claimMap);
