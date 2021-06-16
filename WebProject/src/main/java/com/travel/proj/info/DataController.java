@@ -3,7 +3,6 @@ package com.travel.proj.info;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.json.JSONObject;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,11 +24,14 @@ public class DataController {
 		boolean result = false;
 		String jsonResult = "";
 		
+		if (sigungu == null) return null;
+		
 		try {
 			// api 콜하기
 			ApiExplorer apiEx = new ApiExplorer();
 			jsonResult= apiEx.areaBasedList(sigungu);
 			result = true;
+			System.out.println(sigungu);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -100,20 +102,19 @@ public class DataController {
 		Map map = new HashMap();
 		boolean result = false;
 		String jsonResult = "";
+		System.out.println(contentId);
 		
 		try {
 			ApiExplorer apiEx = new ApiExplorer();
 			jsonResult= apiEx.detailCommon(contentId);
 			result = true;
+			System.out.println(contentId);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		JSONObject jsonObject = new JSONObject(jsonResult);
-		System.out.println( jsonObject.get("response"));
-		
-		map.put("jsonResult", jsonObject.get("response"));
+		map.put("jsonResult", jsonResult);
 		map.put("result", result);
 		
 		return map;
