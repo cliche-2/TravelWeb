@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import HelloWorld from '@/components/HelloWorld.vue'
 import Login from '@/components/member/login.vue'
 import SiteList from '@/components/info/sitelist.vue'
+import AreaList from '@/components/info/arealist.vue'
 import InfoDetail from '@/components/info/detail.vue'
 import Register from '@/components/member/register.vue'
 import Admin from '@/components/member/admin.vue'
@@ -30,6 +31,12 @@ export default new VueRouter({
       path: '/site-list',
       name: 'SiteList',
       component: SiteList,
+      props: true
+    },
+    {
+      path: '/area-list',
+      name: 'AreaList',
+      component: AreaList,
       props: true
     },
     {
