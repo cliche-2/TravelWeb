@@ -16,26 +16,25 @@
       <section id="detail_group">
         <div id="intro">
           <p>구분카테고리명</p>
-          <p>명소이름</p>
-          <img :src="img_path" alt="" style="width: 1260px">
+          <p>{{site.title}}</p>
+          <img :src="site.firstimage" alt="" style="width: 1260px">
           <div class="btnList">
             <span class="btn1 on">첫번째</span>
             <span class="btn2">두번째</span>
             <span class="btn3">세번째</span>
           </div>
           <div id="content">
-            명소 소개 내용 입력란입니다.<br>
-            {{info}}
+            {{site.overview}}<br>
           </div>
         </div>
         <div id="info">
           <h2 class="hidden"><a href="#">정보</a></h2>
           <ul>
-            <li>주소 <span>주소주소주소주소</span></li>
-            <li>우편번호 <span>00000</span></li>
-            <li>전화번호 <span>00-000-0000</span></li>
-            <li>홈페이지 <span>https://homepageadress.net/</span></li>
-            <li>여분 <span>공 백 공 백</span></li>
+            <li>주소 <span>{{site.addr1}}</span></li>
+            <!-- 파싱해야함
+            <li>홈페이지 <span>{{site.homepage}}</span></li>
+          -->
+            <li>우편번호 <span>{{site.zipcode}}</span></li>
           </ul>
         </div>
       </section>
@@ -54,30 +53,22 @@ export default {
     contentid: {
       type: String,
       default: ''
-    },
-    typeid: {
-      type: String,
-      default:''
     }
   },
   data() {
     return {
-      info: null,
-      img_path: "http://tong.visitkorea.or.kr/cms/resource/85/2031885_image2_1.jpg",
-      now_contentid: this.$route.params.contentid
+      site: [],
+      cid: ''
     };
   },
   created: function() {
-    alert('created');
     const self = this;
-    var cid = self.now_contentid;
-    this.$axios.get('/travel/detail/' + cid)
+    self.cid = this.$route.params.contentid;
+    this.$axios.get('/travel/detail/' + self.cid)
       .then(function(res) {
         if (res.data.result) {
-          alert(res.data.result); // 여기까지 됨
-          var temp = res.data.jsonResult.body.pageNo;
-          alert(temp);
-
+          var temp = JSON.parse(res.data.jsonResult);
+          self.site = temp.response.body.items.item;
         } // if
       }); // GET
   }
