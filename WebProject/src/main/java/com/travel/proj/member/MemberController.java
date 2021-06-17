@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -90,8 +91,9 @@ public class MemberController {
 	
 	
 	// 회원조회
+		// 인터셉터
 		// 관리자용 모두조회
-	@GetMapping("")
+	@GetMapping("/userlist")
 	public Map getAll() {
 		Map map = new HashMap();
 		ArrayList<Member> memberList = null;
@@ -115,9 +117,13 @@ public class MemberController {
 		
 		return map;
 	}
+	
+		// 인터셉터
 		// 마이페이지-내정보
-	@GetMapping("/{memNum}")
-	public Map getMember(@PathVariable("memNum") int memNum) {
+	// 일단 마이페이지 자체가 인증 되어야 들어갈 수 있어서
+	// 이하 기능의 인증을 생략했는데 사실 구현해야 함
+	@GetMapping("/mypage")
+	public Map getMember(@RequestAttribute("memNum") int memNum) {
 		Map map = new HashMap();
 		boolean result = false;
 		Member m = null;
@@ -131,6 +137,7 @@ public class MemberController {
 		map.put("m", m);
 		return map;
 	}
+	
 		// 마이페이지-북마크목록
 	@GetMapping("/bookmarks/{memNum}")
 	public Map getBookmarks(@PathVariable("memNum") int memNum) {
@@ -152,25 +159,32 @@ public class MemberController {
 	@PostMapping("/check")
 	public Map checkEmail (String email) {
 		Map map = new HashMap();
-		boolean result = false;
+		boolean result = true;
 		String message = "";
+		boolean available = false;
+		System.out.println(email);
+		Member member = service.getMemberByEmail(email);
 		
 		try {
-			if(service.getMemberByEmail(email) != null) {
+			if( member != null) {
 				message = "이미 존재하는";
+				available = false;
 			} else {
 				message = "사용 가능";
-				result = true;
+				available = true;
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			result = false;
 		}
 		
 		map.put("result", result);
+		map.put("available", available);
 		map.put("message", message);
 		return map;
 	}
+	
 	
 	// 회원정보수정
 	@PutMapping("/{memNum}")

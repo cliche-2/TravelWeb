@@ -24,7 +24,8 @@ public class DataController {
 		boolean result = false;
 		String jsonResult = "";
 		
-		if (sigungu == null) return null;
+		if (sigungu.isBlank() || sigungu.isEmpty()) {}
+		else {
 		
 		try {
 			// api 콜하기
@@ -36,6 +37,7 @@ public class DataController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		}
 		
 		map.put("jsonResult", jsonResult);
 		map.put("result", result);
@@ -45,13 +47,14 @@ public class DataController {
 
 		
 	// 카테고리별로 Get Mapping
-	@GetMapping("{category}")
+	@GetMapping("/{category}")
 	public Map showCategory(@PathVariable("category") String category) {
 		Map map = new HashMap();
 		boolean result = false;
 		String jsonResult = "";
 		
-		if (category == null) return null;
+		if (category.isBlank() || category.isEmpty()) {}
+		else {
 		
 		try {
 			// api 콜하기
@@ -59,6 +62,32 @@ public class DataController {
 			jsonResult= apiEx.typeBasedList(category);
 			result = true;
 			System.out.println(category);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		}
+		
+		
+		map.put("jsonResult", jsonResult);
+		map.put("result", result);
+		
+		return map;
+	}
+	
+	@GetMapping("/search/{keyword}")
+	public Map showSearch(@PathVariable("keyword") String keyword) {
+		Map map = new HashMap();
+		boolean result = false;
+		String jsonResult = "";
+	
+		
+		try {
+			// api 콜하기
+			ApiExplorer apiEx = new ApiExplorer();
+			jsonResult= apiEx.searchKeyword(keyword);
+			result = true;
+			System.out.println(keyword);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

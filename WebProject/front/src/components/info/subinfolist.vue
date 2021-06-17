@@ -5,7 +5,7 @@
     <li class="list" v-for="site in sitelist" v-bind:key="site.contentid">
       <router-link :to="{name: 'InfoDetail', params:{'contentid':site.contentid, 'typeid':'12'}}">
         <a href="#">
-          <div><img :src="site.firstimage2" v-bind:alt="img_path" style="width: 368px"></div>
+          <div><img :src="site.firstimage2" v-bind:alt="img_path" style="width: 368px; height:245px;"></div>
           <div>{{site.title}}</div>
           <div>{{site.addr1}}</div>
         </a>

@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld.vue'
 import Login from '@/components/member/login.vue'
 import SiteList from '@/components/info/sitelist.vue'
 import AreaList from '@/components/info/arealist.vue'
+import Search from '@/components/info/search.vue'
 import InfoDetail from '@/components/info/detail.vue'
 import Register from '@/components/member/register.vue'
 import Admin from '@/components/member/admin.vue'
@@ -37,6 +38,12 @@ export default new VueRouter({
       path: '/area-list',
       name: 'AreaList',
       component: AreaList,
+      props: true
+    },
+    {
+      path: '/search',
+      name: 'Search',
+      component: Search,
       props: true
     },
     {
