@@ -54,16 +54,18 @@ export default {
 
       this.$axios.post('/members/login', form)
         .then(function(resource) {
-          alert(resource.data.result);
+    //      alert(resource.data.result);
           if (resource.data.result) {
             // set token
-            self.$cookies.set('token', resource.data.jwt, 60*60*2);
-//            alert('set cookie');
-            // 토큰 저장까지는 됨!
+            var mytoken = resource.data.jwt
+            self.$cookies.set('token', mytoken, 60*60*2);
+  //          alert(mytoken);
             // set header with token
-            self.$axios.defaults.headers['token'] = self.$cookies.get('token');
-            alert(self.$cookies.isKey('token'));
+            self.$axios.defaults.headers['token'] = mytoken;
+  //          alert("isKey:"+self.$cookies.isKey('token'));
             self.$router.push('/');
+          } else {
+            alert('login failed');
           }
         }); // POST
     } // login:

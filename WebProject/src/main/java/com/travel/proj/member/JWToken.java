@@ -5,18 +5,23 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.stereotype.Component;
+
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.Jws;
+import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.SignatureException;
 import io.jsonwebtoken.UnsupportedJwtException;
 
+// component 지정 유의
+@Component
 public class JWToken {
 	
 	final String key = "secretKey";
-	
 	
 	
 	
@@ -36,20 +41,50 @@ public class JWToken {
 		expTime.setTime(expTime.getTime() + timeLength);
 		
 		// Token Builder
-		String jwt = Jwts.builder()
-				.setHeader(headers)
-				.setClaims(payloads)
-				.setSubject("memNum") 	// 토큰 용도
-				.setExpiration(expTime) 
-				.signWith(SignatureAlgorithm.HS256, key.getBytes()) // sign
-				.compact(); // create token
+		String jwt=null;
+		try {
+			jwt = Jwts.builder()
+					.setHeader(headers)
+					.setClaims(payloads)
+					.setSubject("memNum") 	// 토큰 용도
+					.setExpiration(expTime) 
+					.signWith(SignatureAlgorithm.HS256, key.getBytes("UTF-8")) // sign
+					.compact();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		return jwt;
 	}
 	
 	
+	// 토큰 유효성 검사
+	public boolean validToken(String jwt) {
+		
+		try {
+			Jws<Claims> claims = Jwts.parser()
+					.setSigningKey(key.getBytes("UTF-8"))
+					.parseClaimsJws(jwt);
+			if(claims.getBody().getExpiration().before(new Date())) {
+				return false;
+			}
+			
+			return true;
+			
+		} catch (JwtException | IllegalArgumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+		
+	}
 	
-	 // 필터?
+	 // 검증을 위한 값 추출
 	public Map verifyJWT(String jwt) throws UnsupportedEncodingException{
 		
 		Map claimMap = null;
@@ -87,6 +122,11 @@ public class JWToken {
 		return claimMap;
 	}
 	
+	// 토큰에서 memNum 추출하기
+	public int getSubject(String token) {
+		String s =Jwts.parser().setSigningKey(key).parseClaimsJws(token).getBody().getSubject();
+		return Integer.parseInt(s);
+	}
 	
 
 }

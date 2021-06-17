@@ -52,7 +52,7 @@ public class MemberService {
 	public Member getMemberByEmail(String email)	{
 		int memNum=0;
 		memNum= rep.findMemNumByEmail(email);
-		
+		System.out.println(memNum);
 		if (memNum==0) return null;
 		return rep.findById(memNum).orElse(null);
 	}
