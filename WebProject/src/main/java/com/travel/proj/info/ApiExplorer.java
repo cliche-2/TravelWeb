@@ -15,7 +15,7 @@ public class ApiExplorer {
 	private String serviceKey=""; 
 	private String areaCode = "1"; 	// 서울 지역코드
 	private String MobileOS = "ETC";// OS 구분
-	private String numOfRows = "10";// 페이지 당 결과 수 - 고정 
+	private String numOfRows = "12";// 페이지 당 결과 수 - 고정 
 	private String pageNo ="1";
 	// 현재 페이지 번호 <<<<< 페이지 넘기는 거 수정하기
 	// 사용할 데이터 양이 얼마나 되는 지 확인한 후, 최대값 (예를 들어 500) 으로 지정해서, 모든 데이터를 한번에 넘겨 주고 페이지 처리는 vue에서 하도록 할까
@@ -247,6 +247,7 @@ public class ApiExplorer {
 	
 	
 	/* 키워드 검색 조회 */
+	// title 기준인 듯
 	public String searchKeyword(String keyword) {
 		String baseurl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchKeyword";
 		StringBuilder urlBuilder = new StringBuilder(baseurl);
@@ -260,6 +261,8 @@ public class ApiExplorer {
 						  .append("&" + URLEncoder.encode("MobileOS","UTF-8") + "=" + URLEncoder.encode(MobileOS, "UTF-8")) /*IOS (아이폰), AND (안드로이드), WIN (원도우폰), ETC*/
 						  .append("&" + URLEncoder.encode("MobileApp","UTF-8") + "=" + URLEncoder.encode("AppTest", "UTF-8")) /*서비스명=어플명*/
 						  .append("&" + URLEncoder.encode("areaCode","UTF-8") + "=" + URLEncoder.encode(areaCode, "UTF-8"))
+						  .append("&" + URLEncoder.encode("contentTypeId","UTF-8") + "=" + URLEncoder.encode("12", "UTF-8"))
+						  .append("&" + URLEncoder.encode("arrange","UTF-8") + "=" + URLEncoder.encode("O", "UTF-8")) /*정렬 제목순*/
 						  .append("&" + URLEncoder.encode("keyword","UTF-8") + "=" + URLEncoder.encode(keyword, "UTF-8"))	
 						  .append("&" + URLEncoder.encode("_type", "UTF-8") + "=" + URLEncoder.encode("json","UTF-8"));
 						
