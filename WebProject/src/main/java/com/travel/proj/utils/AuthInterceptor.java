@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -16,17 +17,17 @@ import com.travel.proj.member.JWToken;
 
 @Component
 public class AuthInterceptor implements HandlerInterceptor {
-	// WebConfig에 저장된 요청이 해당되어 이 인터셉터가 실행되어
+	// WebConfig에 저장된 요청이 해당되어 이 인터셉터가 실행되어,
 	// preHandle method를 호출한다.
-
-
-	private AuthExtractor authExtractor;
+	
+	private static final String HEADER_AUTH = "Authorization";
+	
+	@Autowired
 	private JWToken jwToken;
-	
-	
+	private AuthExtractor authExtractor;
+
 	
 	public AuthInterceptor(AuthExtractor authExtractor, JWToken jwToken) {
-		super();
 		this.authExtractor = authExtractor;
 		this.jwToken = jwToken;
 	}
@@ -36,9 +37,9 @@ public class AuthInterceptor implements HandlerInterceptor {
 			HttpServletResponse response, Object handler) {
 		
 		// token 추출
-		String cookie = request.getHeader("cookie");
-		String jwt = cookie.substring(6);
-		System.out.println("TOKENS="+jwt);
+		String token = request.getHeader(HEADER_AUTH);
+//		String jwt = token.substring(6);
+		System.out.println("TOKENS="+token);
 		
 		//test
 		Enumeration<String> em = request.getHeaderNames();
@@ -51,7 +52,7 @@ public class AuthInterceptor implements HandlerInterceptor {
 
 //		String token = authExtractor.extract(request, "a");
 		//if (StringUtils.isEmpty(token)) {
-		if(jwt == null || jwt.isEmpty()) {
+		if(token == null || token.isEmpty()) {
 			throw new IllegalArgumentException("there is no token");
 		}
 		
@@ -62,13 +63,14 @@ public class AuthInterceptor implements HandlerInterceptor {
 		// token decoding
 		Map claimMap = new HashMap(); 
 		try {
-			claimMap = jwToken.verifyJWT(jwt);
+			claimMap = jwToken.verifyJWT(token);
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		System.out.println("VERIFY="+claimMap);
-		int memNum = jwToken.getSubject(jwt);
+		int memNum = jwToken.getSubject(token);
+		System.out.println("memNum="+memNum);
 		
 		// decoding한 값 settting
 		request.setAttribute("memNum", memNum);

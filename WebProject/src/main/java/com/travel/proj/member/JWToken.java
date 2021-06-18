@@ -17,12 +17,11 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.SignatureException;
 import io.jsonwebtoken.UnsupportedJwtException;
 
-// component 지정 유의
+// JWT service
 @Component
 public class JWToken {
 	
 	final String key = "secretKey";
-	
 	
 	
 	public String createToken(int memNum) {
@@ -46,8 +45,10 @@ public class JWToken {
 			jwt = Jwts.builder()
 					.setHeader(headers)
 					.setClaims(payloads)
-					.setSubject("memNum") 	// 토큰 용도
+					.setSubject("memNum") 	// 토큰 용도.
 					.setExpiration(expTime) 
+					// 고정된 key를 바로 사용했지만
+					// key를 매번 만들어주는 것도 좋음
 					.signWith(SignatureAlgorithm.HS256, key.getBytes("UTF-8")) // sign
 					.compact();
 		} catch (UnsupportedEncodingException e) {
@@ -124,8 +125,29 @@ public class JWToken {
 	
 	// 토큰에서 memNum 추출하기
 	public int getSubject(String token) {
-		String s =Jwts.parser().setSigningKey(key).parseClaimsJws(token).getBody().getSubject();
-		return Integer.parseInt(s);
+		int memNum=0;
+		try {
+			memNum = (int) Jwts.parser().setSigningKey(key.getBytes("UTF-8")).parseClaimsJws(token).getBody().get("memNum");
+		} catch (ExpiredJwtException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedJwtException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (MalformedJwtException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SignatureException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return memNum;
 	}
 	
 

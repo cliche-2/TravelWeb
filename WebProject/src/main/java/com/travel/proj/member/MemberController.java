@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.json.Cookie;
@@ -51,7 +52,7 @@ public class MemberController {
 	
 	// 로그인
 	@PostMapping("/login")
-	public Map memberLogin(Member member) {
+	public Map memberLogin(Member member, HttpServletResponse response) {
 		boolean result = false;
 		Map map = new HashMap();
 		Map claimMap = new HashMap(); 
@@ -63,13 +64,14 @@ public class MemberController {
 			if(memNum>0) {
 			// access와 refresh 2 토큰 사용하는 것도 생각해보기
 			try {
-				member.setMemNum(memNum);
 				JWToken jwToken = new JWToken();
-				jwt = jwToken.createToken(member.getMemNum());
+				jwt = jwToken.createToken(memNum);
 				
-				
-				
-				map.put("jwt", jwt);
+//				map.put("jwt", jwt); 
+				// 토큰을 바로 주는 게 아니라 헤더에 넣어서 보내주자.
+				// map에는 사용자고유번호만 주기
+				map.put("memnum", memNum);
+				response.setHeader("Authorization", jwt);
 				System.out.println("CREATE="+jwt);
 				
 				claimMap = jwToken.verifyJWT(jwt);

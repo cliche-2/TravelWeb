@@ -57,12 +57,14 @@ export default {
     //      alert(resource.data.result);
           if (resource.data.result) {
             // set token
-            var mytoken = resource.data.jwt
+            var mytoken = resource.headers.authorization; // 소문자로 옴
+    //        alert('mytoken:'+mytoken); 
+            // set token in cookie
             self.$cookies.set('token', mytoken, 60*60*2);
-  //          alert(mytoken);
+        //    alert('cookie:'+self.$cookies.get('token'));
             // set header with token
-            self.$axios.defaults.headers['token'] = mytoken;
-  //          alert("isKey:"+self.$cookies.isKey('token'));
+            self.$axios.defaults.headers.common['Authorization'] = self.$cookies.get('token');
+
             self.$router.push('/');
           } else {
             alert('login failed');
