@@ -108,26 +108,37 @@ export default {
   components: {},
   data() {
     return {
-      isCookie: null
+      isCookie: false
     };
   },
-  mounted: function() {
+  watch:{
+    '$route' : 'status'
+  },
+  mounted: function() { // 없으면 마이페이지에서 제대로 안나옴
     const self = this;
-    //    alert(self.$cookies.get('token')); 
+    //    alert(self.$cookies.get('token'));
     // create될때만 아니라 여기로 전환될때마다 아래를 실행해줘야 하는데
     self.isCookie = self.$cookies.isKey('token');
   },
   methods: {
+    status: function(){
+      const self = this;
+      self.isCookie = self.$cookies.isKey('token');
+      alert('isCookie:'+self.isCookie);
+    },
+
     mypage: function() {
       // 사용자
       this.$router.push('/mypage');
       //  location.href="admin.html";
     },
+
     deleteCookie: function() {
       const self = this;
       self.$cookies.remove('token');
       self.isCookie = self.$cookies.isKey('token');
       alert("logout");
+      // 해당 페이지에 계속 남아있지 못하게 하기 위함.
       self.$router.push('/');
     } // deleteCookie()
 

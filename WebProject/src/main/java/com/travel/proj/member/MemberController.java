@@ -123,7 +123,7 @@ public class MemberController {
 		// 인터셉터
 		// 마이페이지-내정보
 	// 일단 마이페이지 자체가 인증 되어야 들어갈 수 있어서
-	// 이하 기능의 인증을 생략했는데 사실 구현해야 함
+	// 이하 기능의 인증을 생략했는데 사실 구현해야 함	
 	@GetMapping("/mypage")
 	public Map getMember(@RequestAttribute("memNum") int memNum) {
 		Map map = new HashMap();
