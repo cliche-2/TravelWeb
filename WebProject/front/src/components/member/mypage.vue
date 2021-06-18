@@ -2,7 +2,7 @@
 <div>
 
   <div>
-
+      {{member.name}}님의 마이페이지
   </div>
 
   <div>
@@ -25,11 +25,12 @@ export default {
 
   mounted: function() {
     const self = this;
-    // 요청시 아래 헤더 추가해주기  
+    // 요청시 아래 헤더 추가해주기
     self.$axios.defaults.headers.common['Authorization'] = self.$cookies.get('token');
     self.$axios.get('/members/mypage')
       .then(function(resource) {
-        alert(resource.data.result);
+//        alert(resource.data.result);
+        self.member = resource.data.m;
       }); // GET
   }
 

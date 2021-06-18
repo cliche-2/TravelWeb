@@ -22,19 +22,40 @@ public class Bookmark {
 	@JoinColumn(name = "memNum")
 	private Member member;
 	private String contentid;
+	private String title;			// 관광지명
+	private String firstimage; 		// 이미지 주소
 	// 추천시스템을 위한 필드
 	private String contentTypeId;	// 관광타입
 	private String sigungucode;		// 시군구코드: 지역
 
 	
 	public Bookmark(){};
-	public Bookmark(int bookNum, Member member, String contentid, String contentTypeId, String sigungucode) {
+	
+	
+	public Bookmark(int bookNum, Member member, String contentid, String title, String firstimage, String contentTypeId,
+			String sigungucode) {
 
 		this.bookNum = bookNum;
 		this.member = member;
 		this.contentid = contentid;
+		this.title = title;
+		this.firstimage = firstimage;
 		this.contentTypeId = contentTypeId;
 		this.sigungucode = sigungucode;
+	}
+
+
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getFirstimage() {
+		return firstimage;
+	}
+	public void setFirstimage(String firstimage) {
+		this.firstimage = firstimage;
 	}
 	public int getBookNum() {
 		return bookNum;
