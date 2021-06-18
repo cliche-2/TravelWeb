@@ -17,7 +17,7 @@ import com.travel.proj.member.JWToken;
 
 @Component
 public class AuthInterceptor implements HandlerInterceptor {
-	// WebConfig에 저장된 요청이 해당되어 이 인터셉터가 실행되어
+	// WebConfig에 저장된 요청이 해당되어 이 인터셉터가 실행되어,
 	// preHandle method를 호출한다.
 	
 	private static final String HEADER_AUTH = "Authorization";

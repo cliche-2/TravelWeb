@@ -13,7 +13,7 @@ public class WebConfig implements WebMvcConfigurer {
 			this.authInterceptor = authInterceptor;
 	}
 	
-	// 어떤요청에 대해 intercept할지 등록
+	// 어떤요청에 대해 intercept할지 등록.
 	public void addInterceptors(InterceptorRegistry registry) {
 		System.out.println("interceptor added");
 		registry.addInterceptor(authInterceptor).addPathPatterns("/members/mypage");

@@ -67,7 +67,7 @@ public class MemberController {
 				JWToken jwToken = new JWToken();
 				jwt = jwToken.createToken(memNum);
 				
-//				map.put("jwt", jwt);
+//				map.put("jwt", jwt); 
 				// 토큰을 바로 주는 게 아니라 헤더에 넣어서 보내주자.
 				// map에는 사용자고유번호만 주기
 				map.put("memnum", memNum);

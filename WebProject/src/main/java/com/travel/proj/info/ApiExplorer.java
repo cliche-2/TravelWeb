@@ -28,7 +28,7 @@ public class ApiExplorer {
 	private String keyword;	// 키워드
 	private String cat1	;	// 대분류 코드
 	private String cat2	;	// 중분류 코드
-	private String cat3	;	// 소분류 코드
+	private String cat3	;	// 소분류 코드 
 	
 	
 	public ApiExplorer() {

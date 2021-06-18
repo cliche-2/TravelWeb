@@ -111,9 +111,9 @@ export default {
       isCookie: null
     };
   },
-  created: function() {
+  mounted: function() {
     const self = this;
-    //    alert(self.$cookies.get('token'));
+    //    alert(self.$cookies.get('token')); 
     // create될때만 아니라 여기로 전환될때마다 아래를 실행해줘야 하는데
     self.isCookie = self.$cookies.isKey('token');
   },

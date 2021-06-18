@@ -45,7 +45,7 @@ public class JWToken {
 			jwt = Jwts.builder()
 					.setHeader(headers)
 					.setClaims(payloads)
-					.setSubject("memNum") 	// 토큰 용도
+					.setSubject("memNum") 	// 토큰 용도.
 					.setExpiration(expTime) 
 					// 고정된 key를 바로 사용했지만
 					// key를 매번 만들어주는 것도 좋음
