@@ -45,6 +45,12 @@ export default {
       password: ''
     };
   },
+  created:function(){
+    const self = this;
+    if (self.$cookies.isKey('token')){
+      self.$router.push('/');
+    }
+  },
   methods: {
     login: function() {
       const self = this;
@@ -58,14 +64,13 @@ export default {
           if (resource.data.result) {
             // set token
             var mytoken = resource.headers.authorization; // 소문자로 옴
-    //        alert('mytoken:'+mytoken); 
+    //        alert('mytoken:'+mytoken);
             // set token in cookie
             self.$cookies.set('token', mytoken, 60*60*2);
         //    alert('cookie:'+self.$cookies.get('token'));
             // set header with token
             self.$axios.defaults.headers.common['Authorization'] = self.$cookies.get('token');
-
-            self.$router.push('/');
+            self.$router.go();
           } else {
             alert('login failed');
           }
