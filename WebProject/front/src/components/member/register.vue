@@ -19,7 +19,6 @@
           <div>
             <label for='password'>password :</label>
             <input type="password" v-model="password" />
-            {{pwdmsg}}
           </div>
           <div>
             <label for='name'>Name :</label>
@@ -53,8 +52,7 @@ export default {
       demailchk: false,
       emailchk: false,
       pwdchk: false,
-      emailmsg: 'aa',
-      pwdmsg: ''
+      emailmsg: 'aa'
     };
   },
 
@@ -64,14 +62,14 @@ export default {
       const self = this;
 
       // 빈 칸 체크
-      if(this.email=='' || this.password=='' || this.name==''){
+      if (this.email == '' || this.password == '' || this.name == '') {
         alert('모두 기입해야 함');
         return;
       }
 
       // 이메일, 비밀번호 유효성 체크
-var e = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-var p = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+      var e = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+      var p = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
       if (e.test(this.email)) {
         this.emailchk = true;
@@ -89,28 +87,33 @@ var p = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
         return;
       }
 
+      if (!this.demailchk){
+        alert("이메일 중복체크");
+         return;
+      }
+
 
       // 로그인 정보 전송
-      if (self.emailchk == true && self.pwdchk == true) {
-        const form = new URLSearchParams();
-        form.append('email', this.email);
-        form.append('password', this.password);
-        form.append('name', this.name);
+      const form = new URLSearchParams();
+      form.append('email', this.email);
+      form.append('password', this.password);
+      form.append('name', this.name);
 
-        this.$axios.post('/members/register', form)
-          .then(function(resource) {
-            if (resource.data.result) {
-              self.$router.push('/login');
-            }
-          });
-      }
+      this.$axios.post('/members/register', form)
+        .then(function(resource) {
+          if (resource.data.result) {
+            alert('가입완료');
+            self.$router.push('/login');
+          }
+        });
+
     }, // join:
 
     check: function() {
       // 중복 체크
       const self = this;
       const form = new URLSearchParams();
-      if(this.email == ''){
+      if (this.email == '') {
         alert('이메일을 입력');
         return;
       }
