@@ -2,6 +2,7 @@ package com.travel.proj.info;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,16 +30,18 @@ public class InfoBoardController {
 		Map map = new HashMap();
 		boolean result = false;
 		ArrayList<InfoBoard> boardList = null;
+		List<InfoBoard> list = null;
 		
 		try {
-			boardList = service.getAll();
+			list = service.getAll();
 			result = true;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		map.put("boardList", boardList);
+//		map.put("boardList", boardList);
+		map.put("boardList", list);
 		map.put("result", result);		
 		
 		return map;		

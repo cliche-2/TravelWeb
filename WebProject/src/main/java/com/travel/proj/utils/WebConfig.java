@@ -19,7 +19,7 @@ public class WebConfig implements WebMvcConfigurer {
 		registry.addInterceptor(authInterceptor).addPathPatterns("/members/mypage");
 		registry.addInterceptor(authInterceptor).addPathPatterns("/members/userlist");
 		registry.addInterceptor(authInterceptor).addPathPatterns("/notice/write");
-		registry.addInterceptor(authInterceptor).addPathPatterns("/notice/delete");
+		registry.addInterceptor(authInterceptor).addPathPatterns("/notice/delete/{num}");
 
 	}
 	

@@ -20,8 +20,7 @@
 
           </span>
           <section>
-            <p>
-              {{board.infoContent}}
+            <p v-html="board.infoContent">
             </p>
           </section>
           <router-link to="/no-list" class="back">목록으로</router-link>

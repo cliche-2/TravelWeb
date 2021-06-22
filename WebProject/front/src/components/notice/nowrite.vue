@@ -12,7 +12,9 @@
         <section id="w_s">
           <p>제목</p>
           <textarea v-model="title" id="w_t" placeholder="제목을 입력해주세요."></textarea>
+          <!-- 공백문자열 html태그로 변환해야 함 -->
           <textarea v-model="content" id="w_c" placeholder="내용을 입력해주세요."></textarea>
+          
           <button v-on:click="write" type="button" name="button" class="n_save">작성완료</button>
         </section>
       </div>

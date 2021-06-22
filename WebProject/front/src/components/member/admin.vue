@@ -17,7 +17,7 @@
             <tr v-for="user in userlist" v-bind:key="user.memNum">
               <td>{{user.name}}</td>
               <td>{{user.email}}</td>
-              <td>{{user.regDate}}</td>
+              <td>{{getdate(user.regDate)}}</td>
 
               <td><button class="d_btn" v-on:click="del(user.memNum)">회원삭제</button></td>
             </tr>
@@ -81,7 +81,13 @@ export default {
           self.userlist = resource.data.memberList;
           self.isChanged=false;
         }); // GET
-    } // remove
+    }, // remove
+
+    getdate: function(date){
+      // 날짜 포맷 변경
+      const self = this;
+      return self.$moment(date).format('YYYY년 M월 DD일 HH시 mm분');
+    } // getDate
 
   } // methods:
 }

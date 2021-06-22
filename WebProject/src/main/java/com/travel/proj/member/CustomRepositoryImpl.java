@@ -51,5 +51,7 @@ public class CustomRepositoryImpl implements CustomRepository{
 	public ArrayList<Bookmark> findBookmarksBymemNum(int memNum) {
 		return null;
 	}
+	
+	
 
 }

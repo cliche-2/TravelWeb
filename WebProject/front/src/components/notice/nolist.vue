@@ -81,7 +81,7 @@ export default {
     getdate: function(date){
       // 날짜 포맷 변경
       const self = this;
-      return self.$moment(date).format('YYYY년 MM월 DD일');
+      return self.$moment(date).format('YYYY.MM.DD. HH:mm');
     }
 
 
