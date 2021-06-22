@@ -64,9 +64,11 @@ export default {
           if (resource.data.result) {
             // set token
             var mytoken = resource.headers.authorization; // 소문자로 옴
+            var mynum = resource.data.memnum;
     //        alert('mytoken:'+mytoken);
             // set token in cookie
             self.$cookies.set('token', mytoken, 60*60*2);
+            self.$cookies.set('memnum', mynum, 60*60*2);
         //    alert('cookie:'+self.$cookies.get('token'));
             // set header with token
             self.$axios.defaults.headers.common['Authorization'] = self.$cookies.get('token');

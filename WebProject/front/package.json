@@ -10,8 +10,10 @@
   "dependencies": {
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
+    "moment": "^2.29.1",
     "vue": "^2.6.11",
     "vue-cookies": "^1.7.4",
+    "vue-momentjs": "^1.0.0",
     "vue-router": "^3.5.1"
   },
   "devDependencies": {

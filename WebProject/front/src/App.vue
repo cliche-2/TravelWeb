@@ -21,7 +21,7 @@
           <router-link to='/'>커뮤니티</router-link>
         </li>
         <li>
-          <router-link to='/'>공지사항</router-link>
+          <router-link to='/no-list'>공지사항</router-link>
         </li>
       </ul>
     </nav>
@@ -136,6 +136,7 @@ export default {
     deleteCookie: function() {
       const self = this;
       self.$cookies.remove('token');
+      self.$cookies.remove('memnum');
       self.isCookie = self.$cookies.isKey('token');
       alert("logout");
       // 해당 페이지에 계속 남아있지 못하게 하기 위함.

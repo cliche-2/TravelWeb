@@ -28,7 +28,7 @@
               </tr>
               <tr>
                 <td class="t_name">가입일자</td>
-                <td>{{member.regDate}}</td>
+                <td>{{getdate(member.regDate)}}</td>
               </tr>
             </table>
             <div id="m_1_group">
@@ -121,7 +121,14 @@ export default {
 //        }
 //      })
       ; // DELETE
-    } // delete:
+    }, // delete:
+
+
+    getdate: function(date){
+      // 날짜 포맷 변경
+      const self = this;
+      return self.$moment(date).format('YYYY년 MM월 DD일 HH시');
+    }
 
   }
 

@@ -2,8 +2,12 @@ package com.travel.proj.info;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -30,8 +34,12 @@ public class InfoBoardService {
 	}
 	
 	// 공지 목록 조회
-	public ArrayList<InfoBoard> getAll(){
-		return (ArrayList<InfoBoard>)rep.findAll();
+	public List<InfoBoard> getAll(){
+		Pageable pageable = PageRequest.of(0, 20, Sort.by("infoNum").descending());
+		List<InfoBoard> list = rep.findAll(pageable).getContent();
+	//	System.out.println("InfoBoard*****"+list.toString());
+		
+		return list;
 	}
 	
 	// 공지 글 하나 조회 (조회수 ^)
