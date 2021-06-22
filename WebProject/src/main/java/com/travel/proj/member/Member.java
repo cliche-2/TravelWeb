@@ -27,6 +27,7 @@ public class Member {
 //	private String email2;  // 아이디찾기 시 연락가능한 email2, default = email 
 	private String password; 
 	private String name;	// 닉네임, 유일값
+	@Column(updatable = false)
 	private Date regDate; // 데이터타입 유의
 	@OneToMany(mappedBy = "member")
 	private List<Bookmark> bookmarks = new ArrayList<>();

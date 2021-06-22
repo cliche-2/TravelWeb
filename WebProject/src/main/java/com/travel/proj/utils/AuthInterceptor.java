@@ -42,12 +42,12 @@ public class AuthInterceptor implements HandlerInterceptor {
 		System.out.println("TOKENS="+token);
 		
 		//test
-		Enumeration<String> em = request.getHeaderNames();
-	    while(em.hasMoreElements()){
-	        String name = em.nextElement() ;
-	        String val = request.getHeader(name) ;
-	        System.out.println(name + " : " + val) ;
-	    }
+//		Enumeration<String> em = request.getHeaderNames();
+//	    while(em.hasMoreElements()){
+//	        String name = em.nextElement() ;
+//	        String val = request.getHeader(name) ;
+//	        System.out.println(name + " : " + val) ;
+//	    }
 
 
 //		String token = authExtractor.extract(request, "a");
