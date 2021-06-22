@@ -53,6 +53,9 @@ export default {
       .then(function(resource) {
 //        alert(resource.data.result);
         self.member = resource.data.m;
+        if(self.member.memNum == 1){
+          self.$router.push('/admin');
+        }
       }); // GET
   }
 

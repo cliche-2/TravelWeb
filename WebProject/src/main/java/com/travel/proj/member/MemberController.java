@@ -96,13 +96,13 @@ public class MemberController {
 		// 인터셉터
 		// 관리자용 모두조회
 	@GetMapping("/userlist")
-	public Map getAll() {
+	public Map getAll(@RequestAttribute("memNum") int memNum) {
 		Map map = new HashMap();
 		ArrayList<Member> memberList = null;
 		boolean result = false;
-			
-		// !관리자 접속인지 확인하는 부분 있어야 하나?
-		if (true) {
+		
+		// 관리자 체크
+		if (memNum==1) {
 			try {
 				memberList = service.getAll();
 				result = true;
