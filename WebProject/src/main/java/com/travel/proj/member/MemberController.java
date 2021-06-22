@@ -203,6 +203,7 @@ public class MemberController {
 		}
 		
 		map.put("result", result);
+		System.out.println("result="+result);
 		
 		return map;
 		

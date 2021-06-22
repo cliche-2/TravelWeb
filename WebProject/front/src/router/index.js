@@ -9,6 +9,8 @@ import InfoDetail from '@/components/info/detail.vue'
 import Register from '@/components/member/register.vue'
 import Admin from '@/components/member/admin.vue'
 import Mypage from '@/components/member/mypage.vue'
+import Myinfo from '@/components/member/myinfo.vue'
+import Mypost from '@/components/member/mypost.vue'
 
 
 Vue.use(VueRouter)
@@ -60,6 +62,16 @@ export default new VueRouter({
       path: '/mypage',
       name: 'Mypage',
       component: Mypage
+    },
+    {
+      path: '/mypost',
+      name: 'Mypost',
+      component: Mypost
+    },
+    {
+      path: '/myinfo',
+      name: 'Myinfo',
+      component: Myinfo
     },
     {
       path: '/admin',

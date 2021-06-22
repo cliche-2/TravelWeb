@@ -1,15 +1,37 @@
 <template>
-<div>
-
   <div>
-      {{member.name}}님의 마이페이지
+    <main>
+      <section id="mypage_whole">
+            <div id="mypage_banner"></div>
+            <div id="breadcrumb_one">
+              <a href="index.html">home</a>
+              <a href="mypage.html">마이페이지</a>
+            </div>
+
+            <div id="mypage">
+              <h3 class="mypage">{{member.name}}님의 마이페이지</h3>
+              <section id="m_group">
+                <div>
+                    <router-link to='/myinfo'>
+                      <span>내 정보</span>
+                    </router-link>
+                </div>
+                <div>
+                    <router-link to='/mypost'>
+                      <span>작성한 글</span>
+                    </router-link>
+                </div>
+                <div>
+                    <router-link to='/mybookmark'>
+                      <span>북마크</span>
+                    </router-link>
+                </div>
+              </section>
+            </div>
+          </section>
+    </main>
+
   </div>
-
-  <div>
-
-  </div>
-
-</div>
 </template>
 
 
