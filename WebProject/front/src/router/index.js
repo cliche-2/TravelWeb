@@ -11,6 +11,9 @@ import Admin from '@/components/member/admin.vue'
 import Mypage from '@/components/member/mypage.vue'
 import Myinfo from '@/components/member/myinfo.vue'
 import Mypost from '@/components/member/mypost.vue'
+import NoDetail from '@/components/notice/nodetail.vue'
+import NoList from '@/components/notice/nolist.vue'
+import NoWrite from '@/components/notice/nowrite.vue'
 
 
 Vue.use(VueRouter)
@@ -72,6 +75,21 @@ export default new VueRouter({
       path: '/myinfo',
       name: 'Myinfo',
       component: Myinfo
+    },
+    {
+      path: '/no-detail',
+      name: 'NoDetail',
+      component: NoDetail
+    },
+    {
+      path: '/no-list',
+      name: 'NoList',
+      component: NoList
+    },
+    {
+      path: '/no-write',
+      name: 'NoWrite',
+      component: NoWrite
     },
     {
       path: '/admin',

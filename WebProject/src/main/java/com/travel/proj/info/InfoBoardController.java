@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -53,8 +54,10 @@ public class InfoBoardController {
 		try {
 			InfoBoard infoBoard = null;
 			infoBoard = service.getInfoBoardByNum(num);
+			System.out.println("infoBoard:getOne:"+infoBoard.toString());
 			if(infoBoard != null) {
 				map.put("board", infoBoard);
+				result = true;
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -69,10 +72,11 @@ public class InfoBoardController {
 	// 인터셉터
 	// 공지 작성 - 관리자만
 	@PostMapping("/write")
-	public Map add(InfoBoard infoBoard) {
+	public Map add(InfoBoard infoBoard, @RequestAttribute("memNum") int memNum) {
 		Map map = new HashMap();
 		boolean result = false;
 		
+		if(memNum == 1) {
 		try {
 			service.add(infoBoard);
 			result = true;
@@ -80,24 +84,28 @@ public class InfoBoardController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		}
 		
 		map.put("result", result);
 		return map;
 	}
 	
 	
+	
 	// 공지 삭제 - 관리자만
 	@DeleteMapping("/delete/{num}")
-	public Map del(@PathVariable("num") int num) {
+	public Map del(@PathVariable("num") int num, @RequestAttribute("memNum") int memNum) {
 		Map map = new HashMap();
 		boolean result = false;
 		
+		if(memNum == 1) {
 		try {
 			service.delete(num);
 			result = true;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
 		}
 		
 		map.put("result", result);

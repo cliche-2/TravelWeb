@@ -42,12 +42,9 @@
 #intro { width: 1500px; margin: 0 auto; }
 #intro p:first-of-type { color: #005c4f; font-size: 20px; text-align: center; }
 #intro p:last-of-type { font-weight: bold; font-size: 40px; text-align: center; }
-#intro img { margin: 40px 0 0 120px; }
-.btnList { width: 90px; margin: 0 auto; padding-top: 20px; }
-.btnList span { display: block; width: 20px; height: 20px; float: left; margin: 0 5px;
-                background: #bfbfbf; border-radius: 50%; text-indent: -9999px; cursor: pointer; }
-.btnList span:hover { background: #005c4f; }
-.btnList .on { background: #005c4f; }
+.bookmark.on { display: block; background: url(../images/bookmark_e.png) center center; width: 52px; height: 50px; margin: 5px auto 0; cursor: pointer; }
+.bookmark { display: block; background: url(../images/bookmark_f.png) center center; width: 52px; height: 50px; margin: 5px auto 0; cursor: pointer; }
+#intro img { margin: 20px 0 0 120px; }
 #content { clear: both; font-size: 21px; color: #707070; line-height: 30px; padding-top: 50px; }
 #info { width: 1500px; margin: 0 auto; margin-top: 50px; font-size: 22px; }
 #info ul { width: 650px; }
@@ -124,8 +121,9 @@
 #m_2 { width: 1190px; margin: 0 auto; }
 .title2 { width: 260px; height: 130px; background: url(../images/mypage_2.png) no-repeat; }
 .title2 span { font-size: 32px; display: block; padding: 80px 0 0 120px; font-weight: 500; }
-#m_2 table { width: 1184px; font-size: 24px; margin-top: 20px; border-collapse: collapse; text-align: center; }
+#m_2 table { width: 1184px; font-size: 21px; margin-top: 20px; border-collapse: collapse; text-align: center; }
 #m_2 table tr { height: 60px; border-bottom: 1px solid #a6a6a6; }
+#m_2 table th { font-size: 24px; }
 .post_cap { background: rgba(0,92,79,0.6); text-align: center; color: #fff; }
 .post_cap th:nth-child(1) { width: 10px; }
 .post_cap th:nth-child(2) { width: 200px; }
@@ -149,3 +147,36 @@
 /* manage.html */
 .manage_cap { background: rgba(0,92,79,0.6); text-align: center; color: #fff; }
 .d_btn { background: red; height: 40px; width: 120px; border: none; font-size: 19px; color: #fff; cursor: pointer; }
+
+/* notice.html */
+#notice_whole { width: 100%; }
+#notice_banner { width: 100%; height: 377px; position: relative;
+                background: url(../images/notice_banner.jpg) center center / cover; }
+#notice { width: 1500px; margin: 0 auto; padding-top: 120px; }
+.notice { font-size: 45px; text-align: center; font-weight: 500; margin-bottom: 20px; }
+.notice_cap { background: rgba(0,92,79,0.6); text-align: center; color: #fff; }
+.notice_cap th:nth-child(1) { width: 5%; }
+.notice_cap th:nth-child(2) { width: 50%; }
+.notice_cap th:nth-child(3) { width: 15%; }
+.notice_cap th:nth-child(4) { width: 20%; }
+.notice_cap th:nth-child(5) { width: 15%; }
+.click { cursor: pointer; }
+.click:hover { opacity: 0.6; }
+.write { display: block; width: 100px; height: 40px; background: #005c4f; color: #fff; font-size: 17px; text-align: center; margin: 20px 0 50px; line-height: 40px; clear: both; }
+
+/* notice_detail.html */
+#n_s { width: 1190px; margin: 0 auto; }
+#n_s > p:nth-of-type(1) { font-size: 35px; }
+#n_s > p:nth-of-type(2) { font-size: 20px; color: #a1a1a1; }
+#n_s span { position: relative; left: 1050px; top: -13px; }
+#n_s span button { color: #fff; width: 60px; height: 35px; font-size: 17px; border: none; background: #a1a1a1; margin: 0 5px; cursor: pointer; }
+#n_s section { border: 1px solid #d4d4d4; padding: 15px; }
+#n_s section p { font-size: 20px; }
+.back { display: block; width: 140px; height: 60px; background: #005c4f; color: #fff; font-size: 22px; text-align: center; line-height: 60px; clear: both; margin: 35px auto 50px; }
+
+/* notice_write.html */
+#w_s { width: 1190px; margin: 0 auto; }
+#w_s > p:nth-of-type(1) { font-size: 22px; float: left; margin-right: 15px; font-weight: 500; }
+#w_t { border: 1px solid #d4d4d4; width: 1120px; height: 30px; padding-left: 10px; resize: none; font-size: 17px; font-family: 'Noto Sans KR'; }
+#w_c { border: 1px solid #d4d4d4; width: 1157px; height: 600px; padding: 15px; resize: none; font-size: 20px; font-family: 'Noto Sans KR'; margin-top: 20px; }
+.n_save { color: #fff; width: 140px; height: 60px; font-size: 22px; font-family: 'Noto Sans KR'; border: none; background: #005c4f; cursor: pointer; margin: 20px auto 50px; display: block; }

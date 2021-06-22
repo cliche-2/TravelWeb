@@ -2,6 +2,7 @@ package com.travel.proj.info;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,6 +20,7 @@ public class InfoBoard {
 	private int viewCount;
 	private String infoTitle;
 	private String infoContent;
+	@Column(updatable = false)
 	private Date infoDate;
 	
 	public InfoBoard() {
