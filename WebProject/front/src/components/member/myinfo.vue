@@ -33,7 +33,7 @@
             </table>
             <div id="m_1_group">
               <a href="" class="modify" v-on:click="update">수정</a>
-              <router-link to="/mypage" class="con1">확인</router-link>
+              <router-link to="/mypage" class="con1">마이페이지로</router-link>
             </div>
             <a href="" class="sece" v-on:click="del">탈퇴하기</a>
           </section>

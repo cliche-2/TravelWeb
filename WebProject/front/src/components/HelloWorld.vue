@@ -1,32 +1,53 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+    <main>
+    <section id="sliderWrap">
+      <h2 class="hidden">DATOO 배너</h2>
+      <ul id="sliderList">
+        <li class="slider1">
+          <dl>
+            <dt>서울 여행의 모든 것</dt>
+            <dd>D A T O O</dd>
+          </dl>
+          <a href="#">자세히보기</a>
+        </li>
+        <li class="slider2">
+          <dl>
+            <dt>서울 여행의 모든 것</dt>
+            <dd>D A T O O</dd>
+          </dl>
+          <a href="#">자세히보기</a>
+        </li>
+        <li class="slider3">
+          <dl>
+            <dt>서울 여행의 모든 것</dt>
+            <dd>D A T O O</dd>
+          </dl>
+          <a href="#">자세히보기</a>
+        </li>
+      </ul>
+      <!-- 배너 컨트롤 -->
+      <div class="controls">
+        <span class="prev">이전</span>
+        <span class="next">다음</span>
+      </div>
+    </section>
+    <section id="hotplace">
+      <h2>hot place</h2>
+      <ul>
+
+        <li v-for="site in list" v-bind:key='site.contentid'>
+          <img :src="site.firstimage" alt="경복궁">
+          <p>{{site.title}}</p>
+          <router-link :to="{name: 'InfoDetail', params:{'contentid':site.contentid}}">
+            <a href="#">자세히보기 →</a>
+          </router-link>
+        </li>
+
+      </ul>
+
+    </section>
+  </main>
   </div>
 </template>
 
@@ -35,7 +56,24 @@ export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  data(){
+    return{
+      list:[],
+      pic: 3 // 사진 개수.
+    };
+  },
+
+  created:function(){
+    const self = this;
+    self.$axios.get('/bookmarks/count/'+self.pic)
+    .then(function(res){
+      if(res.data.result){
+        self.list = res.data.list;
+      }
+    }); // GET
   }
+
 }
 </script>
 

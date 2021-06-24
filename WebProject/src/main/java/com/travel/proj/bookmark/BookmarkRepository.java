@@ -10,6 +10,6 @@ public interface BookmarkRepository extends JpaRepository<Bookmark, Integer>, Cu
 //	ArrayList<Bookmark> findByMember(int Memnum);
 //	
 	// contentid로 찾기
-	Integer countByContentid(String contentid); // 반환 데이터타입 맞는지 주의
+//	Integer countByContentid(); // 반환 데이터타입 맞는지 주의
 
 }

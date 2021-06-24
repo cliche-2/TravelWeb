@@ -2,23 +2,18 @@
 
 <div>
   <main>
-    <section id="place_whole">
-      <div id="place_banner">
-        <div class="place">
-          <p>Everything about traveling to Seoul</p>
-          <h2>검색</h2>
-        </div>
+    <section id="search_whole">
+      <div id="search_banner">
+        <h2>검색</h2>
       </div>
-      <div id="breadcrumb">
-        <a href="">home</a>
-        <a href="">여행지</a>
-        <a href="">명소</a>
+      <div id="breadcrumb_one">
+        <a href="index.html">home</a>
+        <a href="login.html">검색</a>
       </div>
       <section id="list_group">
-        <h3 class="hidden">여행지 리스트</h3>
-        <div id="tap">
-          <input type="text" v-model="keyword" />
-          <button v-on:click='search'>검색</button>
+        <div id="s_box">
+          <input class="s_box" type="text" placeholder="검색어를 입력해주세요." v-model="keyword" />
+          <button class="s_btn" v-on:click='search'>검색</button>
         </div>
 
         <ul id="place_list">

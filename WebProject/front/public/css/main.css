@@ -1,0 +1,42 @@
+@charset "utf-8";
+@import url(common.css);
+
+#sliderWrap { width: 100%; position: relative; overflow: hidden; }
+#sliderList { width: 300%; height: 729px; position: relative; }
+#sliderWrap li { width:33.3333%; float:left; height: 729px; background:no-repeat center center/cover; }
+#sliderWrap li a { width: 220px; height: 60px; display: block; border: 1px solid #fff; color: #fff; background: rgba(0,92,79,0.4);
+                  font-size: 19px; text-align: center; line-height: 60px; position: relative; z-index: 999; }
+#sliderWrap li a:hover { background: rgba(255, 255, 255, 0.7); transition: 0.5s; color: #000; }
+#sliderList li dl { text-align: center; margin-top: 250px; text-shadow: 2px 2px 9px rgb(0 0 0 / 80%); }
+#sliderList li dl dt { font-size: 23px; color: #fff; font-weight: 400; }
+#sliderList li dl dd { color: #fff; font-size: 60px; font-weight: bold; margin-top: 10px; line-height: 60px; }
+#sliderList li a { margin: 50px auto; }
+#sliderList li.slider1 { background-image: url(../images/banner1.jpg); }
+#sliderList li.slider2 { background-image: url(../images/banner2.jpg); }
+#sliderList li.slider3 { background-image: url(../images/banner3.jpg); }
+
+.controls { position: absolute; top: 298px; left: calc(50% - 750px); width: 1500px; text-indent: -9999px; }
+.controls span { width: 69px; height: 133px; display: block; cursor: pointer; }
+.prev { background-image: url(../images/banner_prev.png); float: left; }
+.next { background-image: url(../images/banner_next.png); float: right; }
+
+#hotplace { width: 1600px; margin: 0 auto; margin-top: 170px; position: relative; }
+#hotplace h2 { text-transform: uppercase; font-size: 60px; font-weight: 500; text-align: center; letter-spacing: 10px; }
+#hotplace ul { width: 1500px; margin-bottom: 150px; }
+#hotplace ul li { margin: 80px 20px 120px; width: 1500px; position: relative; }
+#hotplace ul li img { width: 700px; height: 420px; }
+#hotplace ul li:nth-of-type(1) img { margin-left: 170px; }
+#hotplace ul li:nth-of-type(2) img { margin-left: 750px; }
+#hotplace ul li:nth-of-type(3) img { margin-left: 85px; }
+#hotplace ul li:nth-of-type(4) img { margin-left: 590px; }
+#hotplace ul li p { font-size: 150px; position: absolute; color: #cccc; bottom: 90px; font-family: 'Yeon Sung'; }
+#hotplace ul li:nth-of-type(1) p { right: 300px; }
+#hotplace ul li:nth-of-type(2) p { left: 170px; }
+#hotplace ul li:nth-of-type(3) p { right: 340px; }
+#hotplace ul li:nth-of-type(4) p { left: 30px; }
+#hotplace ul li a { display: block; width: 250px; height: 70px; text-align: center; line-height: 70px; border: 1px solid #9c9c9c; color: #9c9c9c; font-size: 21px; position: absolute; bottom: 7px; }
+#hotplace ul li:nth-of-type(1) a { right: 330px; }
+#hotplace ul li:nth-of-type(2) a { left: 450px; }
+#hotplace ul li:nth-of-type(3) a { right: 410px; }
+#hotplace ul li:nth-of-type(4) a { left: 285px; }
+#hotplace ul li a:hover { background: rgba(0,92,79,0.7); transition: 0.5s; color: #fff; }

@@ -1,7 +1,7 @@
 @charset "utf-8";
 @import url(common.css);
 
-/* sights.html */
+/* sights */
 #place_whole { width: 100%; }
 #place_banner { width: 100%; height: 560px; position: relative;
                 background: url(../images/place_banner.jpg) center center / cover; color: #fff; }
@@ -36,13 +36,13 @@
 .list a div:nth-child(2):hover { font-weight: 500; }
 .list a div:nth-child(3) { font-size: 22px; margin: 0 20px; color: #787878; height: 64px; overflow: hidden; }
 
-/* place_detail.html */
+/* place_detail */
 #detail { width: 100%; height: 2400px; }
 #detail_group { width: 1500px; height: 1000px; margin: 0 auto; padding-top: 170px; }
 #intro { width: 1500px; margin: 0 auto; }
 #intro p:first-of-type { color: #005c4f; font-size: 20px; text-align: center; }
 #intro p:last-of-type { font-weight: bold; font-size: 40px; text-align: center; }
-.bookmark.on { display: block; background: url(../images/bookmark_e.png) center center; width: 52px; height: 50px; margin: 5px auto 0; cursor: pointer; }
+.bookmark.off { display: block; background: url(../images/bookmark_e.png) center center; width: 52px; height: 50px; margin: 5px auto 0; cursor: pointer; }
 .bookmark { display: block; background: url(../images/bookmark_f.png) center center; width: 52px; height: 50px; margin: 5px auto 0; cursor: pointer; }
 #intro img { margin: 20px 0 0 120px; }
 #content { clear: both; font-size: 21px; color: #707070; line-height: 30px; padding-top: 50px; }
@@ -51,7 +51,7 @@
 #info ul li { margin-left: 20px; line-height: 45px; }
 #info ul li span { float: right; display: block; width: 500px; color: #707070; }
 
-/* login.html */
+/* login */
 #login_whole { width: 100%; height: 1150px; }
 #member_banner { width: 100%; height: 377px; position: relative;
                 background: url(../images/moon.jpg) center center / cover; }
@@ -73,18 +73,19 @@
 #s_add p:last-child { margin: 10px 0 0 80px; }
 #s_add p:last-child a { width: 110px; }
 
-/* register.html */
+/* register */
 #register { width: 1500px; height: 500px; margin: 0 auto; padding-top: 120px; }
 #register h3 { font-size: 45px; text-align: center; font-weight: 500; margin-bottom: 20px; }
 #small { width: 1260px; height: 375px; border: 1px solid #d4d4d4; margin: 0 auto; }
-#r_small { width: 370px; height: 220px; margin: 90px auto 0; }
+#r_small { width: 374px; height: 220px; margin: 90px auto 0; position: relative; }
 #r_small div label { font-size: 25px; }
 #r_small div input { width: 220px; height: 30px; margin-left: 15px; border: 1px solid #d4d4d4; }
-#r_small button { width: 120px; height: 50px; color: #fff; background: #005c4f; text-transform: uppercase; font-size: 20px; border: none; outline:none; cursor: pointer; margin: 20px 0 0 130px; }
+.join { width: 120px; height: 50px; color: #fff; background: #005c4f; text-transform: uppercase; font-size: 20px; border: none; outline:none; cursor: pointer; margin: 20px 0 0 130px; }
+.over { width: 85px; height: 34px; color: #fff; background: #005c4f; font-size: 16px; border: none; outline: none; cursor: pointer; position: absolute; left: 380px; top: 7px; }
 #r_small div:nth-of-type(1) label { margin-left: 43px; }
 #r_small div:nth-of-type(3) label { margin-left: 45px; }
 
-/* mypage.html */
+/* mypage */
 #mypage_whole { width: 100%; }
 #mypage_banner { width: 100%; height: 377px; position: relative;
                 background: url(../images/mypage_banner.jpg) center center / cover; }
@@ -100,7 +101,7 @@
 #m_group div:nth-of-type(3) a { background: url(../images/mypage3.png) center center no-repeat; }
 #m_group span { font-size: 21px; display: block; text-align: center; padding-top: 200px; }
 
-/* mypage1.html */
+/* mypage1 */
 #mypage1 { width: 1500px; height: 800px; margin: 0 auto; padding-top: 120px; }
 #m_1 { width: 1190px; margin: 0 auto; position: relative; }
 .title1 { width: 245px; height: 130px; background: url(../images/mypage_1.png) no-repeat; }
@@ -116,7 +117,7 @@
 .con1 { display: block; width: 140px; height: 60px; background: #005c4f; color: #fff; font-size: 22px; text-align: center; line-height: 60px; float: right; }
 .sece { display: block; width: 140px; height: 60px; background: red; color: #fff; font-size: 22px; text-align: center; line-height: 60px; position: absolute; top: 60px; left: 1040px; }
 
-/* mypage2.html */
+/* mypage2 */
 #mypage2 { width: 1500px; margin: 0 auto; padding-top: 120px; }
 #m_2 { width: 1190px; margin: 0 auto; }
 .title2 { width: 260px; height: 130px; background: url(../images/mypage_2.png) no-repeat; }
@@ -132,7 +133,7 @@
 .link:hover { opacity: 0.6; }
 .con2 { display: block; width: 140px; height: 60px; background: #005c4f; color: #fff; font-size: 22px; text-align: center; margin: 50px auto; line-height: 60px; clear: both; }
 
-/* mypage3.html */
+/* mypage3 */
 #mypage3 { width: 1500px; margin: 0 auto; padding-top: 120px; }
 .title { width: 245px; height: 130px; background: url(../images/mypage_3.png) no-repeat; }
 .title span { font-size: 32px; display: block; padding: 80px 0 0 120px; font-weight: 500; }
@@ -144,11 +145,11 @@
 .p_list a div:nth-child(2):hover { font-weight: 500; }
 .con { display: block; width: 140px; height: 60px; background: #005c4f; color: #fff; font-size: 22px; text-align: center; line-height: 60px;     clear: both; margin: 50px auto;}
 
-/* manage.html */
+/* manage */
 .manage_cap { background: rgba(0,92,79,0.6); text-align: center; color: #fff; }
 .d_btn { background: red; height: 40px; width: 120px; border: none; font-size: 19px; color: #fff; cursor: pointer; }
 
-/* notice.html */
+/* notice */
 #notice_whole { width: 100%; }
 #notice_banner { width: 100%; height: 377px; position: relative;
                 background: url(../images/notice_banner.jpg) center center / cover; }
@@ -164,7 +165,7 @@
 .click:hover { opacity: 0.6; }
 .write { display: block; width: 100px; height: 40px; background: #005c4f; color: #fff; font-size: 17px; text-align: center; margin: 20px 0 50px; line-height: 40px; clear: both; }
 
-/* notice_detail.html */
+/* notice_detail */
 #n_s { width: 1190px; margin: 0 auto; }
 #n_s > p:nth-of-type(1) { font-size: 35px; }
 #n_s > p:nth-of-type(2) { font-size: 20px; color: #a1a1a1; }
@@ -174,9 +175,23 @@
 #n_s section p { font-size: 20px; }
 .back { display: block; width: 140px; height: 60px; background: #005c4f; color: #fff; font-size: 22px; text-align: center; line-height: 60px; clear: both; margin: 35px auto 50px; }
 
-/* notice_write.html */
+/* notice_write */
 #w_s { width: 1190px; margin: 0 auto; }
 #w_s > p:nth-of-type(1) { font-size: 22px; float: left; margin-right: 15px; font-weight: 500; }
 #w_t { border: 1px solid #d4d4d4; width: 1120px; height: 30px; padding-left: 10px; resize: none; font-size: 17px; font-family: 'Noto Sans KR'; }
 #w_c { border: 1px solid #d4d4d4; width: 1157px; height: 600px; padding: 15px; resize: none; font-size: 20px; font-family: 'Noto Sans KR'; margin-top: 20px; }
 .n_save { color: #fff; width: 140px; height: 60px; font-size: 22px; font-family: 'Noto Sans KR'; border: none; background: #005c4f; cursor: pointer; margin: 20px auto 50px; display: block; }
+
+/* search */
+#search_whole { width: 100%; }
+#search_banner { width: 100%; height: 377px; position: relative;
+                background: url(../images/search_banner.jpg) center center / cover; color: #fff; }
+#search_banner h2 { position: absolute; top: 220px; left: 280px; text-shadow: 2px 2px 15px rgb(0 0 0 / 80%); font-size: 55px; font-weight: 500; }
+.s_btn { width: 85px; height: 32px; color: #fff; background: #005c4f; font-size: 16px; border: none; outline: none; cursor: pointer; margin-left: 10px;}
+
+#list_group { width: 1500px; margin: 0 auto; padding-top: 170px; }
+#list_group h3 { color: #ff8400; font-size: 40px; float: left; margin-right: 20px; }
+#list_group p { float: left; line-height: 60px; font-size: 17px; }
+
+#s_box { width: 1170px; margin: 0 auto; }
+.s_box { border: 1px solid #d4d4d4; height: 30px; padding-left: 10px; font-size: 17px; font-family: 'Noto Sans KR'; }
