@@ -11,6 +11,7 @@ import Admin from '@/components/member/admin.vue'
 import Mypage from '@/components/member/mypage.vue'
 import Myinfo from '@/components/member/myinfo.vue'
 import Mypost from '@/components/member/mypost.vue'
+import Mybookmark from '@/components/member/mybookmark.vue'
 import NoDetail from '@/components/notice/nodetail.vue'
 import NoList from '@/components/notice/nolist.vue'
 import NoWrite from '@/components/notice/nowrite.vue'
@@ -23,7 +24,8 @@ export default new VueRouter({
   routes: [{
       path: '/',
       name: 'HelloWorld',
-      component: HelloWorld
+      component: HelloWorld,
+      props: true
     },
     {
       path: '/login',
@@ -54,7 +56,8 @@ export default new VueRouter({
     {
       path: '/info-detail',
       name: 'InfoDetail',
-      component: InfoDetail
+      component: InfoDetail,
+      props: true
     },
     {
       path: '/register',
@@ -75,6 +78,11 @@ export default new VueRouter({
       path: '/myinfo',
       name: 'Myinfo',
       component: Myinfo
+    },
+    {
+      path: '/mybookmark',
+      name: 'Mybookmark',
+      component: Mybookmark
     },
     {
       path: '/no-detail',

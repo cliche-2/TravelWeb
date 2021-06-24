@@ -9,4 +9,4 @@ import com.travel.proj.bookmark.Bookmark;
 
 
 public interface MemberRepository
-extends JpaRepository<Member, Integer>, CustomRepository {}
+extends JpaRepository<Member, Integer>, CustomMemberRepository {}

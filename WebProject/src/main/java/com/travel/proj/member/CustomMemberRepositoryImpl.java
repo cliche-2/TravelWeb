@@ -5,7 +5,7 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import static com.travel.proj.member.QMember.member;
 
 
-public class CustomRepositoryImpl implements CustomRepository{
+public class CustomMemberRepositoryImpl implements CustomMemberRepository{
 //	
 //	public CustomRepositoryImpl() {
 //		super(Member.class);
@@ -13,7 +13,7 @@ public class CustomRepositoryImpl implements CustomRepository{
 //	
 	
 	private final JPAQueryFactory queryFactory;
-	public CustomRepositoryImpl(JPAQueryFactory queryFactory) {
+	public CustomMemberRepositoryImpl(JPAQueryFactory queryFactory) {
 		super();
 		this.queryFactory = queryFactory;
 	}

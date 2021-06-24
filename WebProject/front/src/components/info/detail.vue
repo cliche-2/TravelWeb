@@ -17,12 +17,14 @@
         <div id="intro">
           <p>구분카테고리명</p>
           <p>{{site.title}}</p>
+
+
+          <span v-if="!check" v-on:click='bookmark' class="bookmark off"></span>
+          <span v-if="check"  v-on:click='bookmark' class="bookmark"></span>
+
+
           <img :src="site.firstimage" alt="" style="width: 1260px">
-          <div class="btnList">
-            <span class="btn1 on">첫번째</span>
-            <span class="btn2">두번째</span>
-            <span class="btn3">세번째</span>
-          </div>
+
           <div id="content">
             {{site.overview}}<br>
           </div>
@@ -48,6 +50,7 @@
 
 
 <script>
+
 export default {
   name: 'InfoDetail',
   props: {
@@ -59,7 +62,9 @@ export default {
   data() {
     return {
       site: [],
-      cid: ''
+      cid: '',
+      check: false,
+      bookid: 0
     };
   },
   created: function() {
@@ -70,8 +75,80 @@ export default {
         if (res.data.result) {
           var temp = JSON.parse(res.data.jsonResult);
           self.site = temp.response.body.items.item;
+          // 만약 로그인했고, memnum에 해당하는 bookmark객체에
+          // cid가 있다면
+          // self.check = true;
+          if(self.$cookies.isKey('token')){
+        //    alert('/find/'+self.cid+'/'+self.$cookies.get('memnum'));
+            var cid = self.cid;
+            var memNum = self.$cookies.get('memnum');
+            self.$axios.get('/bookmarks/find/'+cid+'/'+memNum)
+            .then(function(res){
+              if(res.data.result){
+                if(res.data.booknum != 0){
+                  self.check = true;
+                  self.bookid = res.data.booknum;
+                }
+              }
+            }); // GET
+          }
+
         } // if
       }); // GET
+  },
+
+  methods:{
+    bookmark: function(){
+        const self = this;
+
+        if(!self.$cookies.isKey('token')){
+          alert('로그인 시 사용 가능합니다.');
+          return;
+        }
+
+        self.$axios.defaults.headers.common['Authorization'] = self.$cookies.get('token');
+
+        if(self.check){
+          // 북마크 제거 DELETE 요청
+          self.$axios.delete('/bookmarks/'+self.bookid)
+          .then(function(res){
+            if(res.data.result){
+              alert('북마크에서 삭제되었습니다.');
+              self.check = false;
+            }
+          }); // DELETE
+        } else{
+          // 북마크 추가 POST 요청
+          const form = new URLSearchParams();
+          form.append('member', self.$cookies.get('memnum'));
+          form.append('contentid', self.cid);
+          form.append('title', self.site.title);
+          form.append('firstimage', self.site.firstimage);
+          form.append('contentTypeId', self.site.contenttypeid);
+          form.append('sigungucode', self.site.sigungucode);
+
+          self.$axios.post('/bookmarks', form)
+          .then(function(resource){
+            if(resource.data.result){
+              self.check = true;
+              alert('북마크에 등록되었습니다.');
+
+              // 메소드 추출하기
+              self.$axios.get('/bookmarks/find/'+self.cid+'/'+self.$cookies.get('memnum'))
+              .then(function(res){
+                if(res.data.result){
+                  if(res.data.booknum != 0){
+                    self.check = true;
+                    self.bookid = res.data.booknum;
+                  }
+                }
+              }); // GET
+            }
+          }); // POST
+        }
+
+
+    } // bookmark:
   }
 }
 </script>

@@ -74,6 +74,7 @@ export default {
           if (res.data.result) {
             var temp = JSON.parse(res.data.jsonResult);
             self.sitelist = temp.response.body.items.item;
+            
           } // if
         }); // GET
     },

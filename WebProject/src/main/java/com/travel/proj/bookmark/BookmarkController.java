@@ -2,6 +2,7 @@ package com.travel.proj.bookmark;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -112,20 +113,22 @@ public class BookmarkController {
 	
 	
 	// contentid(여행지)로 검색 > 개수만 리턴
-	@GetMapping("/count/{contentid}")
-	public Map countByContentid(@PathVariable("contentid") String contentid) {
+	@GetMapping("/count/{num}")
+	public Map countByContentid(@PathVariable("num")int num) {
 		Map map = new HashMap();
 		boolean result = false;
-		int count=0;
+	//	Map list = new HashMap();
+		List list = null;
 		
 		try {
-			count = service.countByContentid(contentid);
+			list = service.groupByContentid(num);
 			result= true;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		map.put("result", result);
-		map.put("count", count);
+		map.put("list", list);
+		
 		return map;
 	}
 	
