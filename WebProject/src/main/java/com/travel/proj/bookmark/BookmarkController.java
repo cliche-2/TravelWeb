@@ -1,5 +1,6 @@
 package com.travel.proj.bookmark;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,8 +33,6 @@ public class BookmarkController {
 		Map map = new HashMap();
 		boolean result = false;
 		
-		// memNum을 member객체와 연결하는 작업을 해야 함
-		// 패키지를 넘나드는데 어쩌지
 		
 		try {
 			service.addBookmark(bookmark);
@@ -64,11 +63,56 @@ public class BookmarkController {
 		return map;
 	}
 	
+	// 북마크 num 얻기
+	@GetMapping("/find/{cid}/{memNum}")
+	public Map find(@PathVariable("cid") String cid, @PathVariable("memNum") int memNum) {
+		
+		System.out.println("******* "+cid+ " , " + memNum);
+		Map map = new HashMap();
+		boolean result = false;
+		int booknum = 0;
+		
+		
+		try {
+			booknum = service.getBookNum(cid, memNum);
+			result = true;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		}
+		
+		map.put("booknum", booknum);
+		map.put("result", result);
+		return map;
+	}
 	
-	// MemberId로 검색 >> Member에서 구현
+	
+	// MemberId로 검색
+//	@GetMapping("/{num}")
+//	public Map getMyBookmarks(@PathVariable("num") int num) {
+//		Map map = new HashMap();
+//		boolean result = false;
+//		ArrayList<Bookmark> bookmarks = new ArrayList<>();
+//		
+//		
+//		try {
+//			bookmarks = service.findByMemNum(num);
+//			result = true;
+//			map.put("bookmarks", bookmarks);
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+//		
+//		map.put("result", result);
+//		return map;
+//	}
+	
 	
 	// contentid(여행지)로 검색 > 개수만 리턴
-	@GetMapping("/{contentid}")
+	@GetMapping("/count/{contentid}")
 	public Map countByContentid(@PathVariable("contentid") String contentid) {
 		Map map = new HashMap();
 		boolean result = false;

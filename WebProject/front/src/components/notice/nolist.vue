@@ -21,7 +21,7 @@
             <tr v-for="noti in list" v-bind:key="noti.infoNum">
               <td>{{noti.infoNum}}</td>
               <td><a class="click" v-on:click="getone(noti.infoNum)">
-                {{noti.infoTitle}}</a></td>
+                  {{noti.infoTitle}}</a></td>
               <td>관리자</td>
               <td>{{getdate(noti.infoDate)}}</td>
               <td>{{noti.viewCount}}</td>
@@ -29,7 +29,7 @@
           </table>
 
           <div v-if="admin">
-          <router-link to="/no-write" class="write">새글쓰기</router-link>
+            <router-link to="/no-write" class="write">새글쓰기</router-link>
           </div>
 
         </section>
@@ -44,41 +44,41 @@
 <script>
 export default {
   name: 'NoList',
-  data(){
-    return{
-      list:[],
-      admin:false
+  data() {
+    return {
+      list: [],
+      admin: false
     };
   },
 
-  created:function(){
+  created: function() {
     const self = this;
 
     var hascookie = self.$cookies.isKey('token');
-    if(hascookie){
-      if(self.$cookies.get('memnum') == 1)
-      self.admin = true;
+    if (hascookie) {
+      if (self.$cookies.get('memnum') == 1)
+        self.admin = true;
     }
 
     self.$axios.get('/notice')
-    .then(function(resource){
-      if(resource.data.result){
-        self.list = resource.data.boardList;
-      }
-    }); // GET
+      .then(function(resource) {
+        if (resource.data.result) {
+          self.list = resource.data.boardList;
+        }
+      }); // GET
   },
 
-  methods:{
-    getone: function(num){
+  methods: {
+    getone: function(num) {
       this.$router.push({
-        name:'NoDetail',
-        params:{
-          num:num
+        name: 'NoDetail',
+        params: {
+          num: num
         }
       });
     }, // getone:
 
-    getdate: function(date){
+    getdate: function(date) {
       // 날짜 포맷 변경
       const self = this;
       return self.$moment(date).format('YYYY.MM.DD. HH:mm');
@@ -88,7 +88,6 @@ export default {
   }
 
 }
-
 </script>
 
 

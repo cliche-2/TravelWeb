@@ -2,6 +2,7 @@ package com.travel.proj.member;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,7 +53,7 @@ public class MemberService {
 	public Member getMemberByEmail(String email)	{
 		int memNum=0;
 		memNum= rep.findMemNumByEmail(email);
-		System.out.println(memNum);
+//		System.out.println(memNum);
 		if (memNum==0) return null;
 		return rep.findById(memNum).orElse(null);
 	}
@@ -67,11 +68,11 @@ public class MemberService {
 	}
 	
 	// 해당 멤버의 북마크리스트 가져오기
-	public ArrayList<Bookmark> getBookmarks(int memNum){
-		ArrayList<Bookmark> list = null;
-		list = rep.findBookmarksBymemNum(memNum);
-		return list;
-	}
+//	public List<Bookmark> getBookmarks(int memNum){
+//		List<Bookmark> list = null;
+//		list = rep.findBookmarksByMemNum(memNum);
+//		return list;
+//	}
 	
 
 	
