@@ -40,7 +40,7 @@ public class BookmarkService {
 	
 	// contentid(여행지)로 검색 > 개수만 리턴
 	public List groupByContentid(int count){
-		List<Tuple> results = rep.countGroupByContentid();
+		List<ListVo> results = rep.countGroupByContentid();
 //		List<String>cidList = new ArrayList<>();
 //		Map map = new HashMap();
 		List<BookmarkVo>list = new ArrayList<>();
@@ -56,7 +56,7 @@ public class BookmarkService {
 		for(int i=0; i<count; i++) {
 			BookmarkVo bVo = new BookmarkVo();
 			Bookmark bookmark = null;
-			String cid= results.get(i).get(0,String.class);
+			String cid= results.get(i).getContentid();
 			bookmark= rep.findByContentid(cid);
 			bVo.setContentid(cid);
 			bVo.setFirstimage(bookmark.getFirstimage());

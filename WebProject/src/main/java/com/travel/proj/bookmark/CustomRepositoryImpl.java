@@ -4,8 +4,14 @@ import static com.travel.proj.bookmark.QBookmark.bookmark;
 
 import java.util.List;
 
+import org.hibernate.criterion.Projection;
+
 import com.querydsl.core.QueryResults;
 import com.querydsl.core.Tuple;
+import com.querydsl.core.types.Expression;
+import com.querydsl.core.types.Projections;
+import com.querydsl.core.types.dsl.Expressions;
+import com.querydsl.core.types.dsl.NumberPath;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 public class CustomRepositoryImpl implements CustomRepository{
@@ -43,13 +49,17 @@ public class CustomRepositoryImpl implements CustomRepository{
 
 
 	@Override
-	public List<Tuple> countGroupByContentid() {
+	public List<ListVo> countGroupByContentid() {
 		// TODO Auto-generated method stub
 		
-		List<Tuple> queryResults = queryFactory
-				.select(bookmark.contentid, bookmark.contentid.count())
+		NumberPath<Long> aliasQuantity = Expressions.numberPath(Long.class, "quantity"); // +
+		
+		List<ListVo> queryResults = queryFactory
+//				.select(bookmark.contentid, bookmark.contentid.count())
+				.select(Projections.constructor(ListVo.class, bookmark.contentid, bookmark.count().as(aliasQuantity)))
 				.from(bookmark)
 				.groupBy(bookmark.contentid)
+				.orderBy(aliasQuantity.desc()) // +
 				.fetch();
 		
 	//	System.out.println("queryResults:"+queryResults);
@@ -60,6 +70,7 @@ public class CustomRepositoryImpl implements CustomRepository{
 		
 		
 		return queryResults;
+//		return null;
 	}
 
 
