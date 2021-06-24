@@ -1,14 +1,7 @@
 package com.travel.proj.member;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
-
 import com.querydsl.core.QueryResults;
-import com.querydsl.core.Tuple;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.travel.proj.bookmark.Bookmark;
 import static com.travel.proj.member.QMember.member;
 
 
@@ -47,10 +40,18 @@ public class CustomRepositoryImpl implements CustomRepository{
 		return memNum;
 	}
 
-	@Override
-	public ArrayList<Bookmark> findBookmarksBymemNum(int memNum) {
-		return null;
-	}
+//	@Override
+//	public List<Bookmark> findBookmarksByMemNum(int memNum) {
+//		QueryResults<List<Bookmark>> queryResults = queryFactory
+//		.select(member.bookmarks)
+//		.from(member)
+//		.where(
+//				member.memNum.eq(memNum)
+//				)
+//		.fetchResults();
+//		System.out.println("*****QUERY:"+queryResults);
+//		return queryResults.getResults().get(0);
+//	}
 	
 	
 

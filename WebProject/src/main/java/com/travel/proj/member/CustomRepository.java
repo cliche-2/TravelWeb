@@ -1,6 +1,7 @@
 package com.travel.proj.member;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.travel.proj.bookmark.Bookmark;
 
@@ -13,7 +14,7 @@ public interface CustomRepository {
 	
 	// memNum으로 bookmark리스트 찾기
 //	@Query(value = "SELECT bookmarks FROM member WHERE memNum=?1", nativeQuery = true)
-	ArrayList<Bookmark> findBookmarksBymemNum(int memNum);
+//	List<Bookmark> findBookmarksByMemNum(int memNum);
 	
 
 }

@@ -19,8 +19,9 @@ public class Bookmark {
 	private int bookNum;
 	// (Member num , contentid)
 	@ManyToOne
-	@JoinColumn(name = "memNum")
+	@JoinColumn(name = "member", nullable = false, updatable=false)
 	private Member member;
+	
 	private String contentid;
 	private String title;			// 관광지명
 	private String firstimage; 		// 이미지 주소

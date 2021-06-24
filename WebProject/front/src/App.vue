@@ -74,24 +74,10 @@
         다투│서울특별시 어딘가<br>대표번호 : 000-000-0000 <br>예약문의 : 000-000-0000
       </address>
       <ul>
-        <li><a href="sights.html">여행지</a>
-          <ul class="f_sub">
-            <li><a href="sights.html">명소</a></li>
-            <li><a href="#">카테고리2</a></li>
-            <li><a href="#">카테고리3</a></li>
-            <li><a href="#">카테고리4</a></li>
-          </ul>
-        </li>
-        <li><a href="#">지역</a>
-          <ul class="f_sub">
-            <li><a href="#">카테고리1</a></li>
-            <li><a href="#">카테고리2</a></li>
-            <li><a href="#">카테고리3</a></li>
-            <li><a href="#">카테고리4</a></li>
-          </ul>
-        </li>
+        <li>  <router-link :to="{name: 'SiteList'}">여행지</router-link>  </li>
+        <li>  <router-link :to="{name: 'AreaList'}">지역</router-link>  </li>
         <li><a href="#">커뮤니티</a></li>
-        <li><a href="#">공지사항</a></li>
+        <li>  <router-link to='/no-list'>공지사항</router-link></li>
       </ul>
       <small>Copyright ⓒ 2021 DATOO. All rights reserved.</small>
     </div>

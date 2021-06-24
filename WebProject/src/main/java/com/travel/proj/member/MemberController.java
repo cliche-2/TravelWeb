@@ -3,14 +3,13 @@ package com.travel.proj.member;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.json.Cookie;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,11 +17,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.travel.proj.bookmark.Bookmark;
+import com.travel.proj.bookmark.BookmarkVo;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -99,12 +98,17 @@ public class MemberController {
 	public Map getAll(@RequestAttribute("memNum") int memNum) {
 		Map map = new HashMap();
 		ArrayList<Member> memberList = null;
+		ArrayList<MemberVo> list = null;
 		boolean result = false;
 		
 		// 관리자 체크
 		if (memNum==1) {
 			try {
 				memberList = service.getAll();
+				for(Member m:memberList) {
+					list.add(new MemberVo(m.getMemNum(), m.getEmail(),
+							m.getPassword(), m.getName(), m.getRegDate()));
+				}
 				result = true;
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -114,7 +118,7 @@ public class MemberController {
 			// 관리자 확인 안된경우
 		}
 		
-		map.put("memberList", memberList);
+		map.put("memberList", list);
 		map.put("result", result);
 		
 		return map;
@@ -122,39 +126,55 @@ public class MemberController {
 	
 		// 인터셉터
 		// 마이페이지-내정보
-	// 일단 마이페이지 자체가 인증 되어야 들어갈 수 있어서
-	// 이하 기능의 인증을 생략했는데 사실 구현해야 함	
 	@GetMapping("/mypage")
 	public Map getMember(@RequestAttribute("memNum") int memNum) {
 		Map map = new HashMap();
 		boolean result = false;
 		Member m = null;
+		MemberVo mVo = null;
 		try {
 			m = service.getMemberByMemnum(memNum);
+			mVo = new MemberVo(m.getMemNum(), m.getEmail(),
+					m.getPassword(), m.getName(), m.getRegDate());
 			result = true;
+			
 		}catch(Exception e) {
 			System.out.println(e);
 		}
 		map.put("result", result);
-		map.put("m", m);
+		map.put("m", mVo);
 		return map;
 	}
 	
 		// 마이페이지-북마크목록
-	@GetMapping("/bookmarks/{memNum}")
-	public Map getBookmarks(@PathVariable("memNum") int memNum) {
+	@GetMapping("/bookmarks")
+//	@GetMapping("/bookmarks/{num}")
+	public Map getBookmarks(@RequestAttribute("memNum") int memNum) {
+//	public Map getBookmarks(@PathVariable("num") int memNum) {
 		Map map = new HashMap();
 		boolean result = false;
-		ArrayList<Bookmark> bookmarks = null;
+		List<Bookmark> bookmarks = null;
+		List<BookmarkVo> bookmarks2 = new ArrayList<>();
+		Member m = null;
 		
 		try {
-			bookmarks = service.getBookmarks(memNum);
-			result = true;
+//			bookmarks = service.getBookmarks(memNum);
+			m = service.getMemberByMemnum(memNum);
+			
+			if(m.getBookmarks() != null) {
+				for(Bookmark b:m.getBookmarks()) {
+					bookmarks2.add(new BookmarkVo(
+							b.getBookNum(), b.getContentid(), b.getTitle(), 
+							b.getFirstimage(), b.getContentTypeId(), 
+							b.getSigungucode()));
+				}
+				result = true;
+			}
 		}catch(Exception e) {
 			System.out.println(e);
 		}
 		map.put("result", result);
-		map.put("bookmarks",bookmarks);
+		map.put("bookmarks",bookmarks2);
 		return map;
 	}
 		// 이메일 중복체크
@@ -195,7 +215,7 @@ public class MemberController {
 		boolean result = false;
 		
 		try {
-			service.editMember(member);
+					service.editMember(member);
 			result = true;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -203,7 +223,7 @@ public class MemberController {
 		}
 		
 		map.put("result", result);
-		System.out.println("result="+result);
+	//	System.out.println("result="+result);
 		
 		return map;
 		

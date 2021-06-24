@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -19,7 +20,7 @@ import com.travel.proj.bookmark.Bookmark;
 @Entity
 public class Member {
 
-	@Id // 시퀀스 임의생성했지만 랜덤값만드는게 안전하려나? 세션..?에 저장할 값
+	@Id // 시퀀스 임의생성했지만 랜덤값만드는게 안전하려나? 클라이언트에 저장될 값이니까 
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "mem_sequence")
 	@SequenceGenerator(name = "mem_sequence", sequenceName = "seq_mem", allocationSize=1)
 	private int memNum;
@@ -29,8 +30,9 @@ public class Member {
 	private String name;	// 닉네임, 유일값
 	@Column(updatable = false)
 	private Date regDate; // 데이터타입 유의
-	@OneToMany(mappedBy = "member")
-	private List<Bookmark> bookmarks = new ArrayList<>();
+	
+	@OneToMany(fetch=FetchType.LAZY, mappedBy = "member", cascade = CascadeType.ALL)
+	private List<Bookmark> bookmarks;
 	
 	public Member() {};
 	
@@ -43,6 +45,8 @@ public class Member {
 		this.regDate = regDate;
 		this.bookmarks = bookmarks;
 	}
+	
+	
 
 	public int getMemNum() {
 		return memNum;
