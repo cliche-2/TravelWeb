@@ -110,7 +110,7 @@ export default {
     status: function(){
       const self = this;
       self.isCookie = self.$cookies.isKey('token');
-      alert('isCookie:'+self.isCookie);
+//      alert('isCookie:'+self.isCookie);
     },
 
     mypage: function() {

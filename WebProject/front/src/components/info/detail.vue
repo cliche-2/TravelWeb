@@ -37,7 +37,7 @@
             <li>홈페이지 <span>{{site.homepage}}</span></li>
           -->
             <li>우편번호 <span>{{site.zipcode}}</span></li>
-            <!-- map -->
+
           </ul>
         </div>
       </section>
@@ -64,7 +64,8 @@ export default {
       site: [],
       cid: '',
       check: false,
-      bookid: 0
+      bookid: 0,
+      mapx:0
     };
   },
   created: function() {
@@ -75,6 +76,7 @@ export default {
         if (res.data.result) {
           var temp = JSON.parse(res.data.jsonResult);
           self.site = temp.response.body.items.item;
+          self.mapx = self.site.mapx;
           // 만약 로그인했고, memnum에 해당하는 bookmark객체에
           // cid가 있다면
           // self.check = true;

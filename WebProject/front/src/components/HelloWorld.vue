@@ -40,7 +40,7 @@
           <img :src="site.firstimage" alt="경복궁">
           <p>{{site.title}}</p>
           <router-link :to="{name: 'InfoDetail', params:{'contentid':site.contentid}}">
-            <a href="#">자세히보기 →</a>
+            자세히보기 →
           </router-link>
         </li>
 
@@ -52,6 +52,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'HelloWorld',
   props: {
