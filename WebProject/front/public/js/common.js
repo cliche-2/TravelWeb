@@ -38,12 +38,3 @@ $("#m_group div a").hover(function(){
   $(this).parent("div").css({ background: "#fff" })
   $(this).css({ color: "#000" })
 })
-
-/* bookmark */
-$(".bookmark").click(function() {
-  if ($(this).hasClass('off')) {
-    $(this).removeClass('off')
-  } else {
-    $(this).addClass('off')
-  }
-})

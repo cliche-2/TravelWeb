@@ -14,7 +14,7 @@
           <div>
             <label for='email'>EMAIL :</label>
             <input type="text" v-model="email" />
-            {{emailmsg}}
+        
           </div>
           <div>
             <label for='password'>password :</label>
@@ -25,8 +25,8 @@
             <input type="text" v-model="name" />
           </div>
 
-          <button v-on:click="check">중복체크</button>
-          <button v-on:click="join">join</button>
+          <button class="over" v-on:click="check">중복체크</button>
+          <button class="join" v-on:click="join">join</button>
 
 
         </div>
@@ -122,6 +122,7 @@ export default {
         .then(function(resource) {
           if (resource.data.result) {
             self.emailmsg = resource.data.message;
+            alert(self.emailmsg);
             if (resource.data.available) {
               self.demailchk = true;
             }
