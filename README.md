@@ -1,7 +1,8 @@
 # Datoo
 공공데이터 기반 관광지 정보 제공 웹페이지   
 Public data-based tourist information web page   
-2021.06.08 ~ 2021.06.30
+#### 개발인원: 2명   
+#### 개발기간: 2021.06.08 ~ 2021.06.30
        
 #  Role
 #### 시스템 설계
